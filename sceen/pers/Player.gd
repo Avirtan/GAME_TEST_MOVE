@@ -4,7 +4,7 @@ export (bool) var dead = false
 export (bool) var left = false
 export (bool) var right = false
 
-var Bullet = preload("res://sceen/pers/bullet.tscn")
+var Bullet = preload("res://sceen/pers2D/bullet.tscn")
 var Block = preload("res://sceen/menu/block.tscn")
 
 var velocity = Vector2()
@@ -59,15 +59,15 @@ func get_input():
 			$Anim.animation = "fall_l"
 		elif !run_l and !run_r and moveR and velocity.y > 0 and !hit:
 			$Anim.animation = "fall_r"
+		elif moveR and run_r and !hit and velocity.y > 0:
+			$Anim.animation = "fall_r"
+		elif !moveR and run_l and !hit and velocity.y > 0:
+			$Anim.animation = "fall_l"
 		elif !run_l and !run_r and moveR and velocity.y < 0 and !hit:
 			$Anim.animation = "jump_r"
 		elif !run_l and !run_r and !moveR and velocity.y < 0 and !hit:
 			$Anim.animation = "jump_l"
-		elif moveR and run_r and !hit :
-			$Anim.animation = "jump_r"
-		elif !moveR and run_l and !hit:
-			$Anim.animation = "jump_l"
-		
+	print(moveR and run_r and !hit and velocity.y > 0)
 	if $".".right and !is_on_floor() and jump and !run_l and !run_r:
 		otskok = true
 	if $".".left and !is_on_floor() and jump and !run_l and !run_r:
@@ -80,7 +80,7 @@ func get_input():
 			$Anim.animation = "Spell_L"
 		hit = false
 		shoot()
-	if jump and is_on_floor():
+	if jump and is_on_floor() and !hit and !spell:
 		jumping = true
 		velocity.y = jump_speed
 	if tp:
@@ -116,7 +116,7 @@ func get_input():
 		if !hit and !spell:
 			if is_on_floor():
 				$Anim.animation = "Run_L"
-			elif !is_on_floor() and !hit:
+			elif !is_on_floor() and !hit and velocity.y < 0:
 				$Anim.animation = "jump_l"
 			velocity.x -=run_speed
 			#$Anim.animation = "Run_L"
@@ -129,7 +129,7 @@ func get_input():
 		if !hit and !spell:
 			if is_on_floor():
 				$Anim.animation = "Run_R"
-			elif !is_on_floor() and !hit:
+			elif !is_on_floor() and !hit and velocity.y < 0:
 				$Anim.animation = "jump_r"
 			#$Anim.animation = "Run_R"
 			velocity.x +=run_speed
@@ -148,7 +148,6 @@ func get_input():
 			hit = false
 			$rightA/righthit.disabled = true
 			$leftA/lefthit.disabled = true
-	print(spell)
 	if( spell and $Anim.frame == 2):
 			spell = false
 #func Otskok(delta):
@@ -182,7 +181,7 @@ func _physics_process(delta):
 			velocity.y +=run_speed
 			otskok = false
 			otskok_r = null
-			#moveR = !moveR
+			moveR = !moveR
 			time = 0
 		if moveR:
 			$Anim.animation = "jump_l"
