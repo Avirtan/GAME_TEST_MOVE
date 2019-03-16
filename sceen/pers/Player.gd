@@ -52,7 +52,6 @@ func get_input():
 	jump = Input.is_action_just_pressed('ui_select')
 	tp = Input.is_action_just_pressed("tp")
 	spell_p = Input.is_action_just_pressed("spell")
-	print(velocity.y)
 	if !is_on_floor():
 		#if  !run_l and !run_r and velocity.y < 0:
 		#	$Anim.animation = "jump_ml" 
@@ -114,7 +113,7 @@ func get_input():
 		$leftA/lefthit.disabled = false
 	#print(hit)	
 	if run_l :
-		if !hit:
+		if !hit and !spell:
 			if is_on_floor():
 				$Anim.animation = "Run_L"
 			elif !is_on_floor() and !hit:
@@ -127,7 +126,7 @@ func get_input():
 			velocity.x -=run_speed/1.5
 		moveR = false 
 	if run_r :
-		if !hit:
+		if !hit and !spell:
 			if is_on_floor():
 				$Anim.animation = "Run_R"
 			elif !is_on_floor() and !hit:
@@ -149,6 +148,7 @@ func get_input():
 			hit = false
 			$rightA/righthit.disabled = true
 			$leftA/lefthit.disabled = true
+	print(spell)
 	if( spell and $Anim.frame == 2):
 			spell = false
 #func Otskok(delta):
