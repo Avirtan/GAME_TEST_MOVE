@@ -56,17 +56,17 @@ func get_input():
 	if !is_on_floor():
 		#if  !run_l and !run_r and velocity.y < 0:
 		#	$Anim.animation = "jump_ml" 
-		if !run_l and !run_r and !moveR and velocity.y > 0:
+		if !run_l and !run_r and !moveR and velocity.y > 0 and !hit:
 			$Anim.animation = "fall_l"
-		elif !run_l and !run_r and moveR and velocity.y > 0:
+		elif !run_l and !run_r and moveR and velocity.y > 0 and !hit:
 			$Anim.animation = "fall_r"
-		elif !run_l and !run_r and moveR and velocity.y < 0:
+		elif !run_l and !run_r and moveR and velocity.y < 0 and !hit:
 			$Anim.animation = "jump_r"
-		elif !run_l and !run_r and !moveR and velocity.y < 0:
+		elif !run_l and !run_r and !moveR and velocity.y < 0 and !hit:
 			$Anim.animation = "jump_l"
-		elif moveR and run_r:
+		elif moveR and run_r and !hit :
 			$Anim.animation = "jump_r"
-		elif !moveR and run_l:
+		elif !moveR and run_l and !hit:
 			$Anim.animation = "jump_l"
 		
 	if $".".right and !is_on_floor() and jump and !run_l and !run_r:
