@@ -5,7 +5,7 @@ export (bool) var left = false
 export (bool) var right = false
 
 var Bullet = preload("res://sceen/pers2D/bullet.tscn")
-var Block = preload("res://sceen/menu/block.tscn")
+var Block = preload("res://sceen/pers2D/Metka.tscn")
 
 var velocity = Vector2()
 var moveR = true
@@ -86,6 +86,7 @@ func get_input():
 	if tp:
 		if coordinat == null:
 			bl = Block.instance()
+			
 			bl.set_cord(global_position)
 			get_parent().add_child(bl)
 			coordinat = global_position
