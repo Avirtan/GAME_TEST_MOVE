@@ -54,9 +54,9 @@ func get_input():
 	spell_p = Input.is_action_just_pressed("spell")
 	print(velocity.y)
 	if !is_on_floor():
-		if  !run_l and !run_r and velocity.y < 0:
-			$Anim.animation = "jump_ml"
-		elif !run_l and !run_r and velocity.y > 0:
+		#if  !run_l and !run_r and velocity.y < 0:
+		#	$Anim.animation = "jump_ml" 
+		if !run_l and !run_r and velocity.y > 0:
 			$Anim.animation = "fall_l"
 		elif moveR and run_r:
 			$Anim.animation = "jump_r"
