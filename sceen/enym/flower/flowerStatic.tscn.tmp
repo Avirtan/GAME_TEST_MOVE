@@ -1,0 +1,49 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://sceen/enym/flower/flowerStatic.gd" type="Script" id=1]
+[ext_resource path="res://img/enym/Цветок/цветок1.png" type="Texture" id=2]
+[ext_resource path="res://img/enym/Цветок/цветок2.png" type="Texture" id=3]
+[ext_resource path="res://img/enym/Цветок/цветок3.png" type="Texture" id=4]
+[ext_resource path="res://img/enym/Цветок/цветок4.png" type="Texture" id=5]
+[ext_resource path="res://img/enym/Цветок/цветок5.png" type="Texture" id=6]
+
+[sub_resource type="SpriteFrames" id=1]
+
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "atack",
+"speed": 10.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=2]
+
+custom_solver_bias = 0.0
+extents = Vector2( 9.75001, 10 )
+
+[node name="flower" type="StaticBody2D" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="Anim" type="AnimatedSprite" parent="." index="0"]
+
+frames = SubResource( 1 )
+animation = "atack"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="1"]
+
+position = Vector2( 0.0715036, 16.4076 )
+scale = Vector2( 3.94026, 4.17996 )
+shape = SubResource( 2 )
+
+

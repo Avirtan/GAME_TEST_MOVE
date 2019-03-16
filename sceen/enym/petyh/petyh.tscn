@@ -1,0 +1,138 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://sceen/enym/petyh/petyh.gd" type="Script" id=1]
+[ext_resource path="res://img/enym/petyh/Petukh.png" type="Texture" id=2]
+[ext_resource path="res://img/enym/petyh/петухСтоит1.png" type="Texture" id=3]
+[ext_resource path="res://img/enym/petyh/петухСтоит2.png" type="Texture" id=4]
+[ext_resource path="res://img/enym/petyh/петух1.png" type="Texture" id=5]
+[ext_resource path="res://img/enym/petyh/петух2.png" type="Texture" id=6]
+[ext_resource path="res://sceen/enym/petyh/Area2D.gd" type="Script" id=7]
+[ext_resource path="res://sceen/enym/petyh/Area2D2.gd" type="Script" id=8]
+[ext_resource path="res://sceen/enym/petyh/body.gd" type="Script" id=9]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10.664 )
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 2 ), null, ExtResource( 2 ), null, ExtResource( 2 ) ],
+"loop": true,
+"name": "dead",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), ExtResource( 4 ) ],
+"loop": true,
+"name": "chinit",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "run",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[sub_resource type="RectangleShape2D" id=4]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[sub_resource type="RectangleShape2D" id=5]
+
+custom_solver_bias = 0.0
+extents = Vector2( 22.5939, 10 )
+
+[node name="Petyh" type="KinematicBody2D" index="0"]
+
+position = Vector2( 3.27832, -6.97444 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+isdead = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+
+position = Vector2( -1.9632, -3.78621 )
+scale = Vector2( 3.48593, 6.82814 )
+shape = SubResource( 1 )
+
+[node name="Anim" type="AnimatedSprite" parent="." index="1"]
+
+position = Vector2( 2.05054, -18.4549 )
+frames = SubResource( 2 )
+animation = "run"
+playing = true
+
+[node name="leftM" type="Area2D" parent="." index="2"]
+
+position = Vector2( 113.242, -4.91095 )
+scale = Vector2( 1.2009, 1 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 7 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="leftM" index="0"]
+
+position = Vector2( -15.9154, -4.05253 )
+scale = Vector2( 3.44711, 7.79141 )
+shape = SubResource( 3 )
+disabled = true
+
+[node name="rightM" type="Area2D" parent="." index="3"]
+
+position = Vector2( -88.7208, -49.5617 )
+scale = Vector2( 1.52702, 2.12677 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 8 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="rightM" index="0"]
+
+position = Vector2( -3.37644, 18.2232 )
+scale = Vector2( 2.72126, 3.6857 )
+shape = SubResource( 4 )
+disabled = true
+
+[node name="body" type="Area2D" parent="." index="4"]
+
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 9 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="body" index="0"]
+
+position = Vector2( 0.332886, -6.86053 )
+scale = Vector2( 2.35967, 6.99157 )
+shape = SubResource( 5 )
+
+

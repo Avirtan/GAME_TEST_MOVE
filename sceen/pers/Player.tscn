@@ -1,0 +1,150 @@
+[gd_scene load_steps=35 format=2]
+
+[ext_resource path="res://sceen/pers/Player.gd" type="Script" id=1]
+[ext_resource path="res://img/pers/смерть/смерть1.png" type="Texture" id=2]
+[ext_resource path="res://img/pers/смерть/смерть2.png" type="Texture" id=3]
+[ext_resource path="res://img/pers/смерть/смерть3.png" type="Texture" id=4]
+[ext_resource path="res://img/pers/смерть/смерть4.png" type="Texture" id=5]
+[ext_resource path="res://img/pers/смерть/смерть5.png" type="Texture" id=6]
+[ext_resource path="res://img/pers/магия/магияЛево/магияЛ1.png" type="Texture" id=7]
+[ext_resource path="res://img/pers/магия/магияЛево/магияЛ2.png" type="Texture" id=8]
+[ext_resource path="res://img/pers/магия/магияЛево/магияЛ3.png" type="Texture" id=9]
+[ext_resource path="res://img/pers/бег/бегВправо1.png" type="Texture" id=10]
+[ext_resource path="res://img/pers/бег/бегВправо2.png" type="Texture" id=11]
+[ext_resource path="res://img/pers/магия/магияПраво/магияП1.png" type="Texture" id=12]
+[ext_resource path="res://img/pers/магия/магияПраво/магияП2.png" type="Texture" id=13]
+[ext_resource path="res://img/pers/магия/магияПраво/магияП3.png" type="Texture" id=14]
+[ext_resource path="res://img/pers/бег/стойкаВлево.png" type="Texture" id=15]
+[ext_resource path="res://img/pers/бег/стоямбаЛево1.png" type="Texture" id=16]
+[ext_resource path="res://img/pers/бег/стоямбаЛево2.png" type="Texture" id=17]
+[ext_resource path="res://img/pers/бег/стойкаВправо.png" type="Texture" id=18]
+[ext_resource path="res://img/pers/бег/стоямба1.png" type="Texture" id=19]
+[ext_resource path="res://img/pers/бег/стоямба2.png" type="Texture" id=20]
+[ext_resource path="res://img/pers/удары/ударЛевый/ударЛевый_1.png" type="Texture" id=21]
+[ext_resource path="res://img/pers/удары/ударЛевый/ударЛевый_2.png" type="Texture" id=22]
+[ext_resource path="res://img/pers/удары/ударЛевый/ударЛевый_3.png" type="Texture" id=23]
+[ext_resource path="res://img/pers/удары/ударЛевый/ударЛевый_4.png" type="Texture" id=24]
+[ext_resource path="res://img/pers/удары/ударПравый/ударПравый_1.png" type="Texture" id=25]
+[ext_resource path="res://img/pers/удары/ударПравый/ударПравый_2.png" type="Texture" id=26]
+[ext_resource path="res://img/pers/удары/ударПравый/ударПравый_3.png" type="Texture" id=27]
+[ext_resource path="res://img/pers/удары/ударПравый/ударПравый_4.png" type="Texture" id=28]
+[ext_resource path="res://img/pers/бег/бегВлево1.png" type="Texture" id=29]
+[ext_resource path="res://img/pers/бег/бегВлево2.png" type="Texture" id=30]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 12.8816 )
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 4 ), ExtResource( 5 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "dead",
+"speed": 4.0
+}, {
+"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "Spell_L",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "Run_R",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 14 ) ],
+"loop": true,
+"name": "Spell_R",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 15 ), ExtResource( 16 ), ExtResource( 17 ) ],
+"loop": true,
+"name": "Stop_L",
+"speed": 4.0
+}, {
+"frames": [ ExtResource( 18 ), ExtResource( 19 ), ExtResource( 20 ) ],
+"loop": true,
+"name": "Stop_R",
+"speed": 6.0
+}, {
+"frames": [ ExtResource( 21 ), ExtResource( 22 ), ExtResource( 23 ), ExtResource( 24 ), ExtResource( 24 ) ],
+"loop": true,
+"name": "hit_L",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 25 ), ExtResource( 26 ), ExtResource( 27 ), ExtResource( 28 ), ExtResource( 28 ) ],
+"loop": true,
+"name": "hit_R",
+"speed": 10.0
+}, {
+"frames": [ ExtResource( 29 ), ExtResource( 30 ) ],
+"loop": true,
+"name": "Run_L",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10.4376, 10 )
+
+[sub_resource type="RectangleShape2D" id=4]
+
+custom_solver_bias = 0.0
+extents = Vector2( 7.52075, 5.07898 )
+
+[node name="Player" type="KinematicBody2D"]
+
+scale = Vector2( 0.843736, 0.872223 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+dead = false
+
+[node name="pers" type="CollisionShape2D" parent="." index="0"]
+
+position = Vector2( 1.82824, 20.1243 )
+scale = Vector2( 3.03111, 5.44699 )
+shape = SubResource( 1 )
+_sections_unfolded = [ "Z Index" ]
+
+[node name="Anim" type="AnimatedSprite" parent="." index="1"]
+
+frames = SubResource( 2 )
+animation = "Stop_R"
+playing = true
+
+[node name="right" type="KinematicBody2D" parent="." index="2"]
+
+position = Vector2( 58.4145, 20.4986 )
+scale = Vector2( 2.48484, 7.07437 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+
+[node name="righthit" type="CollisionShape2D" parent="right" index="0"]
+
+shape = SubResource( 3 )
+disabled = true
+
+[node name="left" type="KinematicBody2D" parent="." index="3"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+
+[node name="lefthit" type="CollisionShape2D" parent="left" index="0"]
+
+position = Vector2( -53.317, 21.5856 )
+scale = Vector2( 3.29865, 14.1291 )
+shape = SubResource( 4 )
+disabled = true
+
+

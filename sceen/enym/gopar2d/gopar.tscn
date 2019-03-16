@@ -1,0 +1,226 @@
+[gd_scene load_steps=22 format=2]
+
+[ext_resource path="res://sceen/enym/gopar/gopar.gd" type="Script" id=1]
+[ext_resource path="res://img/enym/gopnik/гопарьЛ/гопарьЛудар.png" type="Texture" id=2]
+[ext_resource path="res://img/enym/gopnik/гопарьЛ/гопарьЛстоит.png" type="Texture" id=3]
+[ext_resource path="res://img/enym/gopnik/гопарьП/гопарьПудар.png" type="Texture" id=4]
+[ext_resource path="res://img/enym/gopnik/гопарьП/гопарьПстоит.png" type="Texture" id=5]
+[ext_resource path="res://img/enym/gopnik/гопарьЛ/гопарьЛбег1.png" type="Texture" id=6]
+[ext_resource path="res://img/enym/gopnik/гопарьЛ/гопарьЛбег2.png" type="Texture" id=7]
+[ext_resource path="res://img/enym/gopnik/гопарьП/гопарьПбег1.png" type="Texture" id=8]
+[ext_resource path="res://img/enym/gopnik/гопарьП/гопарьПбег2.png" type="Texture" id=9]
+[ext_resource path="res://sceen/enym/gopar/hitR.gd" type="Script" id=10]
+[ext_resource path="res://sceen/enym/gopar/hitL.gd" type="Script" id=11]
+[ext_resource path="res://sceen/enym/gopar/right.gd" type="Script" id=12]
+[ext_resource path="res://sceen/enym/gopar/left.gd" type="Script" id=13]
+[ext_resource path="res://sceen/enym/gopar2d/see.gd" type="Script" id=14]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 9.39999, 10.0628 )
+
+[sub_resource type="SpriteFrames" id=2]
+
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "hit_l",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "hit_r",
+"speed": 3.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "run_l",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ) ],
+"loop": true,
+"name": "stopl",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 9 ) ],
+"loop": true,
+"name": "run_r",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 5 ) ],
+"loop": true,
+"name": "stopr",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), null, ExtResource( 3 ), null, null ],
+"loop": true,
+"name": "dead_r",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 3 ), null, ExtResource( 3 ), null, null ],
+"loop": true,
+"name": "dead_l",
+"speed": 5.0
+} ]
+
+[sub_resource type="RectangleShape2D" id=3]
+
+custom_solver_bias = 0.0
+extents = Vector2( 6.01296, 10.4626 )
+
+[sub_resource type="RectangleShape2D" id=4]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10.7737, 10 )
+
+[sub_resource type="RectangleShape2D" id=5]
+
+custom_solver_bias = 0.0
+extents = Vector2( 4.39314, 19.1925 )
+
+[sub_resource type="RectangleShape2D" id=6]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[sub_resource type="RectangleShape2D" id=7]
+
+custom_solver_bias = 0.0
+extents = Vector2( 14.7266, 10 )
+
+[node name="Gopnik" type="KinematicBody2D" index="0"]
+
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+collision/safe_margin = 0.08
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform" ]
+kil = false
+directionR = false
+see = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+
+position = Vector2( 0.269189, 45.4647 )
+scale = Vector2( 2.11876, 4.74094 )
+shape = SubResource( 1 )
+
+[node name="Anim" type="AnimatedSprite" parent="." index="1"]
+
+position = Vector2( 0.256332, 0 )
+z_index = 1
+frames = SubResource( 2 )
+animation = "stopl"
+playing = true
+_sections_unfolded = [ "Z Index" ]
+
+[node name="hitR" type="Area2D" parent="." index="2"]
+
+editor/display_folded = true
+position = Vector2( -66.6428, 13.3285 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 10 )
+
+[node name="ChitR" type="CollisionShape2D" parent="hitR" index="0"]
+
+position = Vector2( 108.572, 2.83214 )
+scale = Vector2( 2.40074, 0.77967 )
+shape = SubResource( 3 )
+disabled = true
+
+[node name="hitL" type="Area2D" parent="." index="3"]
+
+editor/display_folded = true
+position = Vector2( -56.9027, 44.6463 )
+scale = Vector2( 1, 1.44032 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 11 )
+
+[node name="ChitL" type="CollisionShape2D" parent="hitL" index="0"]
+
+position = Vector2( 14.736, -19.1661 )
+scale = Vector2( 1.25596, 0.498533 )
+shape = SubResource( 4 )
+disabled = true
+
+[node name="right" type="Area2D" parent="." index="4"]
+
+editor/display_folded = true
+position = Vector2( 28.3723, 86.9188 )
+scale = Vector2( 1, 1.31701 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 12 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="rightC" type="CollisionShape2D" parent="right" index="0"]
+
+position = Vector2( 2.61464, 4.17354 )
+scale = Vector2( 2.10448, 0.2068 )
+shape = SubResource( 5 )
+
+[node name="left" type="Area2D" parent="." index="5"]
+
+editor/display_folded = true
+position = Vector2( -40.9592, 57.3621 )
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 13 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="leftC" type="CollisionShape2D" parent="left" index="0"]
+
+position = Vector2( 9.55163, 35.8416 )
+scale = Vector2( 0.95757, 0.566022 )
+shape = SubResource( 6 )
+
+[node name="see" type="Area2D" parent="." index="6"]
+
+editor/display_folded = true
+input_pickable = true
+gravity_vec = Vector2( 0, 1 )
+gravity = 98.0
+linear_damp = 0.1
+angular_damp = 1.0
+audio_bus_override = false
+audio_bus_name = "Master"
+script = ExtResource( 14 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="see" index="0"]
+
+position = Vector2( 10.8056, 19.3582 )
+scale = Vector2( 15.5252, 6.40817 )
+shape = SubResource( 7 )
+
+

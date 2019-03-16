@@ -1,0 +1,52 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://icon.png" type="Texture" id=1]
+[ext_resource path="res://Block.tscn" type="PackedScene" id=2]
+[ext_resource path="res://perss.tscn" type="PackedScene" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[node name="Node2D" type="Node2D" index="0"]
+
+position = Vector2( 330.194, 158.449 )
+
+[node name="StaticBody2D" type="StaticBody2D" parent="." index="0"]
+
+editor/display_folded = true
+position = Vector2( 89.8791, 260.937 )
+scale = Vector2( 0.685804, 1 )
+input_pickable = false
+collision_layer = 1
+collision_mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 1.0
+bounce = 0.0
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D" index="0"]
+
+position = Vector2( 84.9908, 17.8663 )
+scale = Vector2( 52.0308, 2.37433 )
+shape = SubResource( 1 )
+
+[node name="Sprite" type="Sprite" parent="StaticBody2D" index="1"]
+
+position = Vector2( 79.1428, 16.6556 )
+scale = Vector2( 16.2126, 1 )
+texture = ExtResource( 1 )
+
+[node name="RigidBody2D2" parent="." index="1" instance=ExtResource( 2 )]
+
+position = Vector2( 87.7668, 215.288 )
+
+[node name="KinematicBody2D" parent="." index="2" instance=ExtResource( 3 )]
+
+position = Vector2( -94.7508, 184.4 )
+
+
