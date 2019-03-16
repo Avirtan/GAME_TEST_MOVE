@@ -170,16 +170,16 @@ func _physics_process(delta):
 			moveR = !moveR
 			otskok_r = true
 		if otskok_r and $".".left:
-			time = 0.9
+			time = 2
 		elif !otskok_r and $".".right:
-			time = 0.9
+			time = 2
 		if otskok_r and time < 0.3:
-			velocity.x -=run_speed/8
+			velocity.x -=run_speed/15
 			velocity.y -=run_speed/5
 		elif !otskok_r and time < 0.3:
-			velocity.x +=run_speed/8
+			velocity.x +=run_speed/15
 			velocity.y -=run_speed/5
-		if time > 0.8 or is_on_floor():
+		if time > 1 or is_on_floor():
 			velocity.y +=run_speed
 			otskok = false
 			otskok_r = null
