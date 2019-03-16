@@ -60,6 +60,10 @@ func get_input():
 			$Anim.animation = "fall_l"
 		elif !run_l and !run_r and moveR and velocity.y > 0:
 			$Anim.animation = "fall_r"
+		elif !run_l and !run_r and moveR and velocity.y < 0:
+			$Anim.animation = "jump_r"
+		elif !run_l and !run_r and !moveR and velocity.y < 0:
+			$Anim.animation = "jump_l"
 		elif moveR and run_r:
 			$Anim.animation = "jump_r"
 		elif !moveR and run_l:
