@@ -67,7 +67,6 @@ func get_input():
 			$Anim.animation = "jump_r"
 		elif !run_l and !run_r and !moveR and velocity.y < 0 and !hit:
 			$Anim.animation = "jump_l"
-	print(moveR and run_r and !hit and velocity.y > 0)
 	if $".".right and !is_on_floor() and jump and !run_l and !run_r:
 		otskok = true
 	if $".".left and !is_on_floor() and jump and !run_l and !run_r:
@@ -165,8 +164,10 @@ func _physics_process(delta):
 	elif otskok :
 		time +=delta
 		if $".".left and otskok_r == null:
+			moveR = !moveR
 			otskok_r = false
 		elif $".".right and otskok_r == null:
+			moveR = !moveR
 			otskok_r = true
 		if otskok_r and $".".left:
 			time = 0.9
@@ -182,12 +183,15 @@ func _physics_process(delta):
 			velocity.y +=run_speed
 			otskok = false
 			otskok_r = null
-			moveR = !moveR
 			time = 0
-		if moveR:
-			$Anim.animation = "jump_l"
-		else:
+		if moveR and velocity.y < 0:
 			$Anim.animation = "jump_r"
+		elif !moveR and velocity.y < 0:
+			$Anim.animation = "jump_l"
+		elif moveR and velocity.y > 0:
+			$Anim.animation = "fall_r"
+		elif !moveR and velocity.y > 0:
+			$Anim.animation = "fall_l"
 		velocity.y +=run_speed/12#gravity * delta
 	if ($".".left or $".".right) and velocity.y > -100  and !is_on_floor():
 		#print($".".left)
