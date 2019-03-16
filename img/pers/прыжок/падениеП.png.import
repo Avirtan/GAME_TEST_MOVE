@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/падениеЛ.png-2e56b04f913640838b3e6a78e151825b.stex"
+path="res://.import/падениеП.png-78c1e7329b4b6d22b17aba611213812a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://img/pers/прыжок/наместе/падениеЛ.png"
-dest_files=[ "res://.import/падениеЛ.png-2e56b04f913640838b3e6a78e151825b.stex" ]
+source_file="res://img/pers/прыжок/падениеП.png"
+dest_files=[ "res://.import/падениеП.png-78c1e7329b4b6d22b17aba611213812a.stex" ]
 
 [params]
 

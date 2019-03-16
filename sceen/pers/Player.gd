@@ -13,7 +13,7 @@ var hit = false
 var spell = false
 var get_col = null
 var hit_move = false
-var jump_speed = -500
+var jump_speed = -700
 var gravity = 1200
 var jumping = false
 var run_speed = 500
@@ -56,8 +56,10 @@ func get_input():
 	if !is_on_floor():
 		#if  !run_l and !run_r and velocity.y < 0:
 		#	$Anim.animation = "jump_ml" 
-		if !run_l and !run_r and velocity.y > 0:
+		if !run_l and !run_r and !moveR and velocity.y > 0:
 			$Anim.animation = "fall_l"
+		elif !run_l and !run_r and moveR and velocity.y > 0:
+			$Anim.animation = "fall_r"
 		elif moveR and run_r:
 			$Anim.animation = "jump_r"
 		elif !moveR and run_l:
