@@ -52,12 +52,17 @@ func get_input():
 	jump = Input.is_action_just_pressed('ui_select')
 	tp = Input.is_action_just_pressed("tp")
 	spell_p = Input.is_action_just_pressed("spell")
-
-	"""if !is_on_floor():
-		if moveR:
+	print(velocity.y)
+	if !is_on_floor():
+		if  !run_l and !run_r and velocity.y < 0:
+			$Anim.animation = "jump_ml"
+		elif !run_l and !run_r and velocity.y > 0:
+			$Anim.animation = "fall_l"
+		elif moveR and run_r:
 			$Anim.animation = "jump_r"
-		else:
-			$Anim.animation = "jump_l"""
+		elif !moveR and run_l:
+			$Anim.animation = "jump_l"
+		
 	if $".".right and !is_on_floor() and jump and !run_l and !run_r:
 		otskok = true
 	if $".".left and !is_on_floor() and jump and !run_l and !run_r:
@@ -151,7 +156,6 @@ func _physics_process(delta):
 	check_slid()"""
 	if (!otskok):
 		get_input()
-		print(1)
 	elif otskok :
 		time +=delta
 		if $".".left and otskok_r == null:
