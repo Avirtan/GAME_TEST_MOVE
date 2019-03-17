@@ -163,7 +163,6 @@ shape = SubResource( 1 )
 position = Vector2( 3.55563, 0 )
 frames = SubResource( 2 )
 animation = "hitv"
-frame = 1
 playing = true
 
 [node name="right" type="Area2D" parent="."]

@@ -156,7 +156,10 @@ func get_input():
 			$leftA/lefthit.disabled = true
 	if( spell and $Anim.frame == 2):
 			spell = false
-		
+	if $".".left and !is_on_floor() and jump and run_r:
+		velocity.x = run_speed*10
+		velocity.y = -run_speed*1.2
+	print(velocity)
 func _physics_process(delta):
 	"""if(!dead):
 		get_input()
@@ -216,7 +219,7 @@ func _physics_process(delta):
 		stena = false
 		
 	if stena:
-		velocity.y += gravity/5 * delta
+		velocity.y += gravity/15 * delta
 	else:
 		velocity.y += gravity * delta
 	if is_on_floor():
