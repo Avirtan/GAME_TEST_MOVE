@@ -147,7 +147,7 @@ func get_input(delta):
 			#$Anim.animation = "Run_R"
 			if !stena and time == -1:
 				velocity.x +=run_speed
-			if stena and time >1:
+			if stena and time >0.5:
 				velocity.x +=run_speed
 		elif hit and !is_on_floor() :
 			velocity.x +=run_speed*2
