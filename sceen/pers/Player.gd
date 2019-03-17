@@ -54,6 +54,7 @@ func get_input():
 	tp = Input.is_action_just_pressed("tp")
 	spell_p = Input.is_action_just_pressed("spell")
 	if !is_on_floor():
+		#print(1)
 		#if  !run_l and !run_r and velocity.y < 0:
 		#	$Anim.animation = "jump_ml" 
 		if !run_l and !run_r and !moveR and velocity.y > 0 and !hit:
@@ -96,7 +97,7 @@ func get_input():
 				bl.queue_free()
 				bl = null
 			coordinat = null
-	if hit_p and !$".".left and !$".".right:
+	if hit_p and !$".".left and !$".".right and is_on_floor():
 		hit = true
 		if moveR:
 			$Anim.animation = "hit_R"
@@ -104,6 +105,11 @@ func get_input():
 		elif !moveR:
 			$Anim.animation = "hit_L"
 			$leftA/lefthit.disabled  = false
+	elif hit_p and !$".".left and !$".".right and !is_on_floor():
+		hit = true
+		$Anim.animation = "hitv"
+		$rightA/righthit.disabled = false
+		$leftA/lefthit.disabled  = false
 	if run_r and hit_p and !hit and !$".".left and !$".".right:
 		hit = true
 		$Anim.animation = "hit_R"
@@ -144,7 +150,7 @@ func get_input():
 			$Anim.animation = "Stop_R"
 		elif !moveR and is_on_floor():
 			$Anim.animation = "Stop_L"
-	if(hit and $Anim.frame == 4 ):
+	if((hit and $Anim.frame == 4)or(!is_on_floor() and $Anim.frame == 2) ):
 			hit = false
 			$rightA/righthit.disabled = true
 			$leftA/lefthit.disabled = true
@@ -158,9 +164,9 @@ func _physics_process(delta):
 		if($Anim.frame == 4 and $Anim.playing):
 			$Anim.stop()
 	check_slid()"""
-	if (!otskok):
-		get_input()
-	elif otskok :
+	#if (!otskok):
+	get_input()
+	"""if otskok :
 		time +=delta
 		if $".".left and otskok_r == null:
 			moveR = !moveR
@@ -195,7 +201,8 @@ func _physics_process(delta):
 		elif !moveR and velocity.y > 0:
 			$Anim.animation = "fall_l"
 		#velocity.y -=gravity/12 * delta
-		velocity.y +=run_speed/12#gravity * delta
+		#velocity.y +=run_speed/12#gravity * delta
+		velocity.y +=run_speed/12"""
 	if ($".".left or $".".right) and velocity.y > -100  and !is_on_floor():
 		#print($".".left)
 		if($".".right and !hit):
@@ -204,18 +211,14 @@ func _physics_process(delta):
 			$Anim.animation = "Stena_L"
 		stena = true
 		#velocity.y += gravity/5 * delta
-		
 	else :
 	#elif !$".".left and !$".".right and  !is_on_floor():
 		stena = false
-		#velocity.y += gravity * delta
-		#print(gravity/5 * delta)
-		#12
+		
 	if stena:
 		velocity.y += gravity/5 * delta
 	else:
 		velocity.y += gravity * delta
-		print(stena)
 	if is_on_floor():
 		otskok = false
 		jumping = false

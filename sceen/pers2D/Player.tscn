@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=2]
+[gd_scene load_steps=54 format=2]
 
 [ext_resource path="res://sceen/pers/Player.gd" type="Script" id=1]
 [ext_resource path="res://img/pers/удары/ударЛевый/ударЛевый_1.png" type="Texture" id=2]
@@ -41,10 +41,12 @@
 [ext_resource path="res://img/pers/смерть/смерть5.png" type="Texture" id=39]
 [ext_resource path="res://img/pers/прыжок/прыжокП.png" type="Texture" id=40]
 [ext_resource path="res://img/pers/прыжок/падениеП.png" type="Texture" id=41]
-[ext_resource path="res://sceen/pers2D/right.gd" type="Script" id=42]
-[ext_resource path="res://sceen/pers2D/rightA.gd" type="Script" id=43]
-[ext_resource path="res://sceen/pers2D/leftA.gd" type="Script" id=44]
-[ext_resource path="res://sceen/pers2D/left.gd" type="Script" id=45]
+[ext_resource path="res://img/pers/удары/воздух/вертухаП1.png" type="Texture" id=42]
+[ext_resource path="res://img/pers/удары/воздух/вертухаП2.png" type="Texture" id=43]
+[ext_resource path="res://sceen/pers2D/right.gd" type="Script" id=44]
+[ext_resource path="res://sceen/pers2D/rightA.gd" type="Script" id=45]
+[ext_resource path="res://sceen/pers2D/leftA.gd" type="Script" id=46]
+[ext_resource path="res://sceen/pers2D/left.gd" type="Script" id=47]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 10, 12.8816 )
@@ -130,6 +132,11 @@ animations = [ {
 "loop": true,
 "name": "fall_r",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 42 ), ExtResource( 43 ), ExtResource( 42 ) ],
+"loop": true,
+"name": "hitv",
+"speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=3]
@@ -155,13 +162,14 @@ shape = SubResource( 1 )
 [node name="Anim" type="AnimatedSprite" parent="."]
 position = Vector2( 3.55563, 0 )
 frames = SubResource( 2 )
-animation = "jump_l"
+animation = "hitv"
+frame = 1
 playing = true
 
 [node name="right" type="Area2D" parent="."]
 position = Vector2( 43.7965, 5.51489 )
 scale = Vector2( 0.198106, 1.00286 )
-script = ExtResource( 42 )
+script = ExtResource( 44 )
 __meta__ = {
 "_edit_group_": true
 }
@@ -174,7 +182,7 @@ shape = SubResource( 3 )
 [node name="rightA" type="Area2D" parent="."]
 position = Vector2( 60.4245, 20.2793 )
 scale = Vector2( 1, 2.26912 )
-script = ExtResource( 43 )
+script = ExtResource( 45 )
 
 [node name="righthit" type="CollisionShape2D" parent="rightA"]
 position = Vector2( -1.38704, 0.229409 )
@@ -185,7 +193,7 @@ disabled = true
 [node name="leftA" type="Area2D" parent="."]
 position = Vector2( -54.7535, 21.1055 )
 scale = Vector2( 0.846286, 2.28096 )
-script = ExtResource( 44 )
+script = ExtResource( 46 )
 
 [node name="lefthit" type="CollisionShape2D" parent="leftA"]
 position = Vector2( 0.225243, -0.595012 )
@@ -196,7 +204,7 @@ disabled = true
 [node name="left" type="Area2D" parent="."]
 position = Vector2( -38.0154, 25.3236 )
 scale = Vector2( 0.212114, 1.6313 )
-script = ExtResource( 45 )
+script = ExtResource( 47 )
 __meta__ = {
 "_edit_group_": true
 }
