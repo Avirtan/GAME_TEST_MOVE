@@ -107,7 +107,11 @@ func get_input():
 			$leftA/lefthit.disabled  = false
 	elif hit_p and !$".".left and !$".".right and !is_on_floor():
 		hit = true
-		$Anim.animation = "hitv"
+		if moveR:
+			$Anim.animation = "hitv_r"
+		else:
+			$Anim.animation = "hitv_l"
+				
 		$rightA/righthit.disabled = false
 		$leftA/lefthit.disabled  = false
 	if run_r and hit_p and !hit and !$".".left and !$".".right:

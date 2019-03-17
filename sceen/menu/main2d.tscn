@@ -14,7 +14,7 @@ position = Vector2( 782.892, 608.56 )
 scale = Vector2( 0.843736, 0.872223 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( -167.781, 527.619 )
+position = Vector2( 174.886, 550.286 )
 z_index = 2
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -40,7 +40,7 @@ texture = ExtResource( 3 )
 
 [node name="StaticBody2D8" type="StaticBody2D" parent="."]
 editor/display_folded = true
-position = Vector2( 610.387, 504.03 )
+position = Vector2( 681.054, 498.697 )
 scale = Vector2( 11.9572, 0.821237 )
 __meta__ = {
 "_edit_group_": true
@@ -72,7 +72,7 @@ texture = ExtResource( 3 )
 
 [node name="StaticBody2D7" type="StaticBody2D" parent="."]
 editor/display_folded = true
-position = Vector2( 160.93, 333.685 )
+position = Vector2( 4.92957, 332.352 )
 scale = Vector2( 1.01833, 10.2819 )
 __meta__ = {
 "_edit_group_": true
