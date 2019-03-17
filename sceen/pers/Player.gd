@@ -22,6 +22,7 @@ var coordinat = null
 var bl = null
 var otskok = false
 var time = 0
+var time_spell = 0
 var otskok_r = null 
 
 var run_l =null
@@ -35,13 +36,13 @@ var stena = false
 
 func Set_dead():
 	if(!dead):
+		#dead = true
 		if moveR:
 			$Anim.animation = 'dead_r'
 		else:
 			$Anim.animation = 'dead_l'
 		#$Anim.animation = 'dead'
 		velocity = Vector2(0,0)
-		dead = true
 	
 func shoot():
 	var b = Bullet.instance()
@@ -78,8 +79,9 @@ func get_input(delta):
 		otskok = true
 	if $".".left and !is_on_floor() and jump and !run_l and !run_r:
 		otskok = true
-	if spell_p and is_on_floor() and !run_l and !run_r:
+	if spell_p and is_on_floor() and !run_l and !run_r and time_spell > 0.8:
 		spell = true
+		time_spell = 0
 		if moveR:
 			$Anim.animation = "Spell_R"
 		else :
@@ -254,6 +256,7 @@ func _physics_process(delta):
 		otskok = false
 		jumping = false
 		time =0
+	time_spell +=delta
 	velocity = move_and_slide(velocity, Vector2(0, -1))
 	
 
