@@ -154,7 +154,7 @@ func get_input():
 			$Anim.animation = "Stop_R"
 		elif !moveR and is_on_floor():
 			$Anim.animation = "Stop_L"
-	if((hit and $Anim.frame == 4)or(!is_on_floor() and $Anim.frame == 2) ):
+	if((hit and $Anim.frame == 4)or(!is_on_floor() and $Anim.frame == 3) ):
 			hit = false
 			$rightA/righthit.disabled = true
 			$leftA/lefthit.disabled = true

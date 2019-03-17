@@ -136,12 +136,12 @@ animations = [ {
 "frames": [ ExtResource( 40 ), ExtResource( 41 ), ExtResource( 42 ), ExtResource( 43 ) ],
 "loop": true,
 "name": "hitv_r",
-"speed": 5.0
+"speed": 15.0
 }, {
 "frames": [ ExtResource( 41 ), ExtResource( 42 ), ExtResource( 43 ), ExtResource( 40 ) ],
 "loop": true,
 "name": "hitv_l",
-"speed": 5.0
+"speed": 15.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=3]
@@ -167,8 +167,8 @@ shape = SubResource( 1 )
 [node name="Anim" type="AnimatedSprite" parent="."]
 position = Vector2( 3.55563, 0 )
 frames = SubResource( 2 )
-animation = "Stop_R"
-frame = 3
+animation = "hitv_r"
+frame = 2
 playing = true
 
 [node name="right" type="Area2D" parent="."]
