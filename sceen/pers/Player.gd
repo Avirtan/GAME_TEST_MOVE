@@ -159,7 +159,9 @@ func get_input():
 	if $".".left and !is_on_floor() and jump and run_r:
 		velocity.x = run_speed*10
 		velocity.y = -run_speed*1.2
-	print(velocity)
+	if $".".right and !is_on_floor() and jump and run_l:
+		velocity.x = -run_speed*10
+		velocity.y = -run_speed*1.2
 func _physics_process(delta):
 	"""if(!dead):
 		get_input()
@@ -219,7 +221,7 @@ func _physics_process(delta):
 		stena = false
 		
 	if stena:
-		velocity.y += gravity/15 * delta
+		velocity.y += gravity/8 * delta
 	else:
 		velocity.y += gravity * delta
 	if is_on_floor():
