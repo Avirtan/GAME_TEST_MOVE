@@ -44,7 +44,7 @@ func shoot():
 	get_parent().add_child(b)
 
 
-func get_input():
+func get_input(delta):
 	velocity.x = 0
 	run_l = Input.is_action_pressed('ui_left')
 	run_r = Input.is_action_pressed('ui_right')
@@ -56,7 +56,7 @@ func get_input():
 	if !is_on_floor():
 		#print(1)
 		#if  !run_l and !run_r and velocity.y < 0:
-		#	$Anim.animation = "jump_ml" 
+		#$Anim.animation = "jump_ml" 
 		if !run_l and !run_r and !moveR and velocity.y > 0 and !hit:
 			$Anim.animation = "fall_l"
 		elif !run_l and !run_r and moveR and velocity.y > 0 and !hit:
@@ -129,7 +129,10 @@ func get_input():
 				$Anim.animation = "Run_L"
 			elif !is_on_floor() and !hit and velocity.y < 0:
 				$Anim.animation = "jump_l"
-			velocity.x -=run_speed
+			if !stena and time < 0.5:
+				velocity.x -=run_speed
+			if stena and time >0.5:
+				velocity.x -=run_speed
 		elif hit and !is_on_floor() :
 			velocity.x -=run_speed*2
 		elif hit:
@@ -142,7 +145,10 @@ func get_input():
 			elif !is_on_floor() and !hit and velocity.y < 0:
 				$Anim.animation = "jump_r"
 			#$Anim.animation = "Run_R"
-			velocity.x +=run_speed
+			if !stena and time == -1:
+				velocity.x +=run_speed
+			if stena and time >1:
+				velocity.x +=run_speed
 		elif hit and !is_on_floor() :
 			velocity.x +=run_speed*2
 		elif hit:
@@ -174,7 +180,7 @@ func _physics_process(delta):
 			$Anim.stop()
 	check_slid()"""
 	#if (!otskok):
-	get_input()
+	get_input(delta)
 	"""if otskok :
 		time +=delta
 		if $".".left and otskok_r == null:
@@ -214,6 +220,8 @@ func _physics_process(delta):
 		velocity.y +=run_speed/12"""
 	if ($".".left or $".".right) and velocity.y > -100  and !is_on_floor():
 		#print($".".left)
+		if time == -1:
+			time = 0
 		if($".".right and !hit):
 			$Anim.animation = "Stena_R"
 		elif($".".left and !hit):
@@ -223,9 +231,11 @@ func _physics_process(delta):
 	else :
 	#elif !$".".left and !$".".right and  !is_on_floor():
 		stena = false
-		
+		time = -1
+	#print(time)
 	if stena:
 		velocity.y += gravity/8 * delta
+		time+=delta
 	else:
 		velocity.y += gravity * delta
 	if is_on_floor():
