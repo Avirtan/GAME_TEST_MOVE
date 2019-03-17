@@ -97,7 +97,6 @@ func get_input():
 				bl.queue_free()
 				bl = null
 			coordinat = null
-			#
 	if hit_p and !$".".left and !$".".right and is_on_floor():
 		hit = true
 		if moveR:
