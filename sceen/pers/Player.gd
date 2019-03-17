@@ -4,8 +4,8 @@ export (bool) var dead = false
 export (bool) var left = false
 export (bool) var right = false
 
-var Bullet = preload("res://sceen/pers/bullet.tscn")
-var Block = preload("res://sceen/menu/block.tscn")
+var Bullet = preload("res://sceen/pers2D/bullet.tscn")
+var Block = preload("res://sceen/pers2D/Metka.tscn")
 
 var velocity = Vector2()
 var moveR = true
@@ -13,7 +13,7 @@ var hit = false
 var spell = false
 var get_col = null
 var hit_move = false
-var jump_speed = -500
+var jump_speed = -700
 var gravity = 1200
 var jumping = false
 var run_speed = 500
@@ -52,12 +52,21 @@ func get_input():
 	jump = Input.is_action_just_pressed('ui_select')
 	tp = Input.is_action_just_pressed("tp")
 	spell_p = Input.is_action_just_pressed("spell")
-
-	"""if !is_on_floor():
-		if moveR:
+	if !is_on_floor():
+		#if  !run_l and !run_r and velocity.y < 0:
+		#	$Anim.animation = "jump_ml" 
+		if !run_l and !run_r and !moveR and velocity.y > 0 and !hit:
+			$Anim.animation = "fall_l"
+		elif !run_l and !run_r and moveR and velocity.y > 0 and !hit:
+			$Anim.animation = "fall_r"
+		elif moveR and run_r and !hit and velocity.y > 0:
+			$Anim.animation = "fall_r"
+		elif !moveR and run_l and !hit and velocity.y > 0:
+			$Anim.animation = "fall_l"
+		elif !run_l and !run_r and moveR and velocity.y < 0 and !hit:
 			$Anim.animation = "jump_r"
-		else:
-			$Anim.animation = "jump_l"""
+		elif !run_l and !run_r and !moveR and velocity.y < 0 and !hit:
+			$Anim.animation = "jump_l"
 	if $".".right and !is_on_floor() and jump and !run_l and !run_r:
 		otskok = true
 	if $".".left and !is_on_floor() and jump and !run_l and !run_r:
@@ -70,12 +79,13 @@ func get_input():
 			$Anim.animation = "Spell_L"
 		hit = false
 		shoot()
-	if jump and is_on_floor():
+	if jump and is_on_floor() and !hit and !spell:
 		jumping = true
 		velocity.y = jump_speed
 	if tp:
 		if coordinat == null:
 			bl = Block.instance()
+			
 			bl.set_cord(global_position)
 			get_parent().add_child(bl)
 			coordinat = global_position
@@ -103,10 +113,10 @@ func get_input():
 		$leftA/lefthit.disabled = false
 	#print(hit)	
 	if run_l :
-		if !hit:
+		if !hit and !spell:
 			if is_on_floor():
 				$Anim.animation = "Run_L"
-			elif !is_on_floor() and !hit:
+			elif !is_on_floor() and !hit and velocity.y < 0:
 				$Anim.animation = "jump_l"
 			velocity.x -=run_speed
 			#$Anim.animation = "Run_L"
@@ -116,10 +126,10 @@ func get_input():
 			velocity.x -=run_speed/1.5
 		moveR = false 
 	if run_r :
-		if !hit:
+		if !hit and !spell:
 			if is_on_floor():
 				$Anim.animation = "Run_R"
-			elif !is_on_floor() and !hit:
+			elif !is_on_floor() and !hit and velocity.y < 0:
 				$Anim.animation = "jump_r"
 			#$Anim.animation = "Run_R"
 			velocity.x +=run_speed
@@ -151,33 +161,37 @@ func _physics_process(delta):
 	check_slid()"""
 	if (!otskok):
 		get_input()
-		print(1)
 	elif otskok :
 		time +=delta
 		if $".".left and otskok_r == null:
+			moveR = !moveR
 			otskok_r = false
 		elif $".".right and otskok_r == null:
+			moveR = !moveR
 			otskok_r = true
 		if otskok_r and $".".left:
-			time = 0.9
+			time = 2
 		elif !otskok_r and $".".right:
-			time = 0.9
+			time = 2
 		if otskok_r and time < 0.3:
-			velocity.x -=run_speed/8
+			velocity.x -=run_speed/15
 			velocity.y -=run_speed/5
 		elif !otskok_r and time < 0.3:
-			velocity.x +=run_speed/8
+			velocity.x +=run_speed/15
 			velocity.y -=run_speed/5
-		if time > 0.8 or is_on_floor():
+		if time > 1 or is_on_floor():
 			velocity.y +=run_speed
 			otskok = false
 			otskok_r = null
-			#moveR = !moveR
 			time = 0
-		if moveR:
-			$Anim.animation = "jump_l"
-		else:
+		if moveR and velocity.y < 0:
 			$Anim.animation = "jump_r"
+		elif !moveR and velocity.y < 0:
+			$Anim.animation = "jump_l"
+		elif moveR and velocity.y > 0:
+			$Anim.animation = "fall_r"
+		elif !moveR and velocity.y > 0:
+			$Anim.animation = "fall_l"
 		velocity.y +=run_speed/12#gravity * delta
 	if ($".".left or $".".right) and velocity.y > -100  and !is_on_floor():
 		#print($".".left)

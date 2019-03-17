@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/гопарьПстоит.png-8c652a9b6b46d45bf15436ec48247925.stex"
+path="res://.import/метка1.png-0a076c88c98af7ce279e008ab6ba195a.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://img/enym/gopnik/гопарьП/гопарьПстоит.png"
-dest_files=[ "res://.import/гопарьПстоит.png-8c652a9b6b46d45bf15436ec48247925.stex" ]
+source_file="res://img/pers/метка/метка1.png"
+dest_files=[ "res://.import/метка1.png-0a076c88c98af7ce279e008ab6ba195a.stex" ]
 
 [params]
 
