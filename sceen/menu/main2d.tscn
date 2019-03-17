@@ -14,11 +14,11 @@ position = Vector2( 782.892, 608.56 )
 scale = Vector2( 0.843736, 0.872223 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 121.552, 500.952 )
+position = Vector2( -167.781, 527.619 )
 z_index = 2
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2( -14.2224, 43.2379 )
+position = Vector2( 3.16063, 47.8239 )
 scale = Vector2( 1.1852, 1.1465 )
 current = true
 
@@ -103,5 +103,5 @@ shape = SubResource( 1 )
 texture = ExtResource( 3 )
 
 [node name="Gopnik" parent="." instance=ExtResource( 4 )]
-position = Vector2( 556.924, 390.06 )
+position = Vector2( 555.591, 384.727 )
 

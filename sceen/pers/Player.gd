@@ -30,6 +30,7 @@ var speel_p = null
 var jump =null
 var tp = null
 var spell_p = null
+var stena = false
 
 func Set_dead():
 	if(!dead):
@@ -111,7 +112,7 @@ func get_input():
 		hit = true
 		$Anim.animation = "hit_L"
 		$leftA/lefthit.disabled = false
-	#print(hit)	
+
 	if run_l :
 		if !hit and !spell:
 			if is_on_floor():
@@ -119,7 +120,6 @@ func get_input():
 			elif !is_on_floor() and !hit and velocity.y < 0:
 				$Anim.animation = "jump_l"
 			velocity.x -=run_speed
-			#$Anim.animation = "Run_L"
 		elif hit and !is_on_floor() :
 			velocity.x -=run_speed*2
 		elif hit:
@@ -150,7 +150,6 @@ func get_input():
 			$leftA/lefthit.disabled = true
 	if( spell and $Anim.frame == 2):
 			spell = false
-#func Otskok(delta):
 		
 func _physics_process(delta):
 	"""if(!dead):
@@ -175,12 +174,15 @@ func _physics_process(delta):
 			time = 2
 		if otskok_r and time < 0.3:
 			velocity.x -=run_speed/15
+			#velocity.y -=gravity/5 * delta
 			velocity.y -=run_speed/5
 		elif !otskok_r and time < 0.3:
 			velocity.x +=run_speed/15
+			#velocity.y -=gravity/5 * delta
 			velocity.y -=run_speed/5
 		if time > 1 or is_on_floor():
 			velocity.y +=run_speed
+			#velocity.y +=gravity * delta
 			otskok = false
 			otskok_r = null
 			time = 0
@@ -192,6 +194,7 @@ func _physics_process(delta):
 			$Anim.animation = "fall_r"
 		elif !moveR and velocity.y > 0:
 			$Anim.animation = "fall_l"
+		#velocity.y -=gravity/12 * delta
 		velocity.y +=run_speed/12#gravity * delta
 	if ($".".left or $".".right) and velocity.y > -100  and !is_on_floor():
 		#print($".".left)
@@ -199,9 +202,19 @@ func _physics_process(delta):
 			$Anim.animation = "Stena_R"
 		elif($".".left and !hit):
 			$Anim.animation = "Stena_L"
-		velocity.y += gravity/5 * delta
+		stena = true
+		#velocity.y += gravity/5 * delta
+		
 	else :
+	#elif !$".".left and !$".".right and  !is_on_floor():
+		stena = false
+		#velocity.y += gravity * delta
+		#print(gravity/5 * delta)
+	if stena:
+		velocity.y += gravity/5 * delta
+	else:
 		velocity.y += gravity * delta
+		print(stena)
 	if is_on_floor():
 		otskok = false
 		jumping = false
