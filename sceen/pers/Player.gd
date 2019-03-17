@@ -210,6 +210,7 @@ func _physics_process(delta):
 		stena = false
 		#velocity.y += gravity * delta
 		#print(gravity/5 * delta)
+		#12
 	if stena:
 		velocity.y += gravity/5 * delta
 	else:
