@@ -195,7 +195,7 @@ func _physics_process(delta):
 		elif !moveR and velocity.y > 0:
 			$Anim.animation = "fall_l"
 		#velocity.y -=gravity/12 * delta
-		velocity.y +=run_speed/12#gravity * delta
+		velocity.y =run_speed/12#gravity * delta
 	if ($".".left or $".".right) and velocity.y > -100  and !is_on_floor():
 		#print($".".left)
 		if($".".right and !hit):
