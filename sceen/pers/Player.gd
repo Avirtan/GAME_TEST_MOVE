@@ -129,7 +129,7 @@ func get_input(delta):
 				$Anim.animation = "Run_L"
 			elif !is_on_floor() and !hit and velocity.y < 0:
 				$Anim.animation = "jump_l"
-			if !stena and time == -1:
+			if !stena and time <= 0:
 				velocity.x -=run_speed
 			if stena and time > 0.5:
 				velocity.x -=run_speed
@@ -138,6 +138,7 @@ func get_input(delta):
 		elif hit:
 			velocity.x -=run_speed/1.5
 		moveR = false 
+	#print(time)
 	if run_r :
 		if !hit and !spell:
 			if is_on_floor():
@@ -145,7 +146,7 @@ func get_input(delta):
 			elif !is_on_floor() and !hit and velocity.y < 0:
 				$Anim.animation = "jump_r"
 			#$Anim.animation = "Run_R"
-			if !stena and time == -1:
+			if !stena and time <= 0:
 				velocity.x +=run_speed
 			if stena and time > 0.5:
 				velocity.x +=run_speed
