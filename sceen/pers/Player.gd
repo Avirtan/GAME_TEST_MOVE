@@ -10,6 +10,7 @@ var Block = preload("res://sceen/pers2D/Metka.tscn")
 var velocity = Vector2()
 var moveR = true
 var hit = false
+var hitv = false
 var spell = false
 var get_col = null
 var hit_move = false
@@ -106,6 +107,7 @@ func get_input(delta):
 			$Anim.animation = "hit_L"
 			$leftA/lefthit.disabled  = false
 	elif hit_p and !$".".left and !$".".right and !is_on_floor():
+		hitv = true
 		hit = true
 		if moveR:
 			$Anim.animation = "hitv_r"
@@ -161,10 +163,15 @@ func get_input(delta):
 			$Anim.animation = "Stop_R"
 		elif !moveR and is_on_floor():
 			$Anim.animation = "Stop_L"
-	if((hit and $Anim.frame == 4)or(!is_on_floor() and $Anim.frame == 3) ):
+	if hit and $Anim.frame == 4:
 			hit = false
 			$rightA/righthit.disabled = true
 			$leftA/lefthit.disabled = true
+	if  $Anim.frame == 3 and hitv == true:
+		hit = false
+		hitv = false
+		$rightA/righthit.disabled = true
+		$leftA/lefthit.disabled = true
 	if( spell and $Anim.frame == 2):
 			spell = false
 	if $".".left and !is_on_floor() and jump and run_r:
