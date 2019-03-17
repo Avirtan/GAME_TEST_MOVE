@@ -35,7 +35,11 @@ var stena = false
 
 func Set_dead():
 	if(!dead):
-		$Anim.animation = 'dead'
+		if moveR:
+			$Anim.animation = 'dead_r'
+		else:
+			$Anim.animation = 'dead_l'
+		#$Anim.animation = 'dead'
 		velocity = Vector2(0,0)
 		dead = true
 	
@@ -181,14 +185,14 @@ func get_input(delta):
 		velocity.x = -run_speed*10
 		velocity.y = -run_speed*1.2
 func _physics_process(delta):
-	"""if(!dead):
-		get_input()
+	if(!dead):
+		get_input(delta)
 	else:
 		if($Anim.frame == 4 and $Anim.playing):
 			$Anim.stop()
-	check_slid()"""
+	#check_slid()
 	#if (!otskok):
-	get_input(delta)
+	#get_input(delta)
 	"""if otskok :
 		time +=delta
 		if $".".left and otskok_r == null:

@@ -167,7 +167,8 @@ shape = SubResource( 1 )
 [node name="Anim" type="AnimatedSprite" parent="."]
 position = Vector2( 3.55563, 0 )
 frames = SubResource( 2 )
-animation = "hitv_r"
+animation = "dead_l"
+frame = 2
 playing = true
 
 [node name="right" type="Area2D" parent="."]
