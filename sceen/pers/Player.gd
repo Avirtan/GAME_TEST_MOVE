@@ -23,6 +23,7 @@ var bl = null
 var otskok = false
 var time = 0
 var time_spell = 0
+var time_jump = 0
 var otskok_r = null 
 
 var run_l =null
@@ -57,6 +58,7 @@ func get_input(delta):
 	hit_p = Input.is_action_just_pressed('hit')
 	speel_p = Input.is_action_just_pressed('spell')
 	jump = Input.is_action_just_pressed('ui_select')
+	var jump_pressd = Input.is_action_pressed('ui_select')
 	tp = Input.is_action_just_pressed("tp")
 	spell_p = Input.is_action_just_pressed("spell")
 	if !is_on_floor():
@@ -88,9 +90,14 @@ func get_input(delta):
 			$Anim.animation = "Spell_L"
 		hit = false
 		shoot()
-	if jump and is_on_floor() and !hit and !spell:
+	if is_on_floor() and !hit and !spell and !jump_pressd and time_jump !=0:#jump and is_on_floor() and !hit and !spell:
 		jumping = true
-		velocity.y = jump_speed
+		velocity.y = jump_speed-(time_jump*100)
+	if jump_pressd:
+		time_jump +=delta
+	else:
+		time_jump = 0
+	print(time_jump*10)
 	if tp:
 		if coordinat == null:
 			bl = Block.instance()
