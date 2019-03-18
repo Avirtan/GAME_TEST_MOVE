@@ -92,9 +92,8 @@ func get_input(delta):
 		shoot()
 	if is_on_floor() and !hit and !spell and !jump_pressd and time_jump !=0:#jump and is_on_floor() and !hit and !spell:
 		jumping = true
-		if time_jump < 0.1:
-			velocity.y = jump_speed-(jump_speed/2)
-			print(jump_speed-(jump_speed/2))
+		if time_jump < 0.15:
+			velocity.y = jump_speed-(jump_speed/5)
 		elif time_jump > 0.1:
 			velocity.y = jump_speed
 	if jump_pressd:
