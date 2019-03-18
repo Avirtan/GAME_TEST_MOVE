@@ -90,17 +90,17 @@ func get_input(delta):
 			$Anim.animation = "Spell_L"
 		hit = false
 		shoot()
-	if is_on_floor() and !hit and !spell and !jump_pressd and time_jump !=0:#jump and is_on_floor() and !hit and !spell:
+	if is_on_floor() and !hit and !spell and (!jump_pressd or time_jump > 0.1):#jump and is_on_floor() and !hit and !spell:
 		jumping = true
-		if time_jump < 0.15:
-			velocity.y = jump_speed-(jump_speed/5)
+		if time_jump < 0.1 and time_jump!=0:
+			velocity.y = jump_speed-(jump_speed/3)
 		elif time_jump > 0.1:
 			velocity.y = jump_speed
 	if jump_pressd:
 		time_jump +=delta
 	else:
 		time_jump = 0
-	#print(time_jump)
+	print( time_jump)
 	if tp:
 		if coordinat == null:
 			bl = Block.instance()
