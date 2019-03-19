@@ -13,4 +13,5 @@ func _process(delta):
 	var r = get_overlapping_bodies()
 	for  i in r:
 		if i.get_name() == "Player" and !$"..".isdead:
+			$"../Cbody".disabled = true
 			i.Set_dead()

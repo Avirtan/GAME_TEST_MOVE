@@ -12,6 +12,7 @@ var direction = Vector2()
 export (bool) var kil = false
 export (bool) var directionR = false
 export (bool) var see = false
+export (bool) var dead = false
 var gravity = 400
 
 func checkDirect():
@@ -59,12 +60,15 @@ func _physics_process(delta):
 		velocity.x = (direction.x*distance.x)/delta
 		velocity.y = gravity 
 		move_and_slide(velocity, Vector2(0, -1))
-	
-			
-
+	elif dead:
+		if !kil:
+			dead()
+		elif $Anim.frame == 3:
+			queue_free()
 func dead():
 	if moveR:
 		$Anim.animation = "dead_r"
 	else:
 		$Anim.animation = "dead_l"
 	kil =true
+	

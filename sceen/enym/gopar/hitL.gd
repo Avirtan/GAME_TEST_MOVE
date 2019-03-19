@@ -7,7 +7,7 @@ func _physics_process(delta):
 		for  i in r:
 			if i.get_name() == "right" or i.get_name() == "left":
 				if !$"../../Player/right/righthit".disabled or !$"../../Player/left/lefthit".disabled :
-					$"..".kil = true
+					$"..".dead = true
 					$"..".queue_free()
 			else:
 				if i.has_method("Set_dead"):

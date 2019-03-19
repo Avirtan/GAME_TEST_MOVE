@@ -4,7 +4,7 @@ extends KinematicBody2D
 var velocity = Vector2()
 var speed = 1
 var get_col = null
-var underatack = false
+export (bool) var underatack = false
 var sec = 0
 export (bool) var isdead = false
 
@@ -33,7 +33,7 @@ func _physics_process(delta):
 			velocity = Vector2()"""
 		#print(get_viewport_rect().size.x)
 		#velocity.x -= 0.1;
-		move_and_slide(velocity)
+		move_and_slide(velocity,Vector2(0,-1))
 	else:
 		if($Anim.frame == 4):
 			queue_free()
@@ -42,6 +42,6 @@ func dead():
 	isdead = true
 	$leftM/CollisionShape2D.disabled = true
 	$rightM/CollisionShape2D.disabled = true
-	$CollisionShape2D.disabled = true
+	$Cbody.disabled = true
 	$Anim.animation = "dead"
 	

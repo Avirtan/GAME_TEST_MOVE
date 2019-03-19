@@ -18,6 +18,18 @@ func start(pos, dir,napr):
 
 func _physics_process(delta):
 	move_and_slide(velocity)
+	"""for  i in r:
+			if i.get_name() == "right" or i.get_name() == "left":
+				if !$"../Player/right/righthit".disabled or !$"../Player/left/lefthit".disabled :
+					queue_free()
+			else:
+				if i.has_method("Set_dead"):
+					$Anim.playing = true
+					i.Set_dead()
+					dead = true"""
+	"""var colliding_areas = get_overlapping_areas()
+	for area in colliding_areas:
+		 area.queue_free()"""
 	if get_slide_count() != 0 :
 		get_col = get_slide_collision(get_slide_count()-1)
 	if get_col!= null:

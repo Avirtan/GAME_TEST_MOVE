@@ -38,12 +38,14 @@ var stena = false
 func Set_dead():
 	if(!dead):
 		#dead = true
+		#$pers.disabled = true
+		#$death.disabled = false
 		if moveR:
 			$Anim.animation = 'dead_r'
 		else:
 			$Anim.animation = 'dead_l'
 		#$Anim.animation = 'dead'
-		velocity = Vector2(0,0)
+		#velocity = Vector2(0,0)
 	
 func shoot():
 	var b = Bullet.instance()
@@ -90,17 +92,17 @@ func get_input(delta):
 			$Anim.animation = "Spell_L"
 		hit = false
 		shoot()
-	if is_on_floor() and !hit and !spell and (!jump_pressd or time_jump > 0.1):#jump and is_on_floor() and !hit and !spell:
+	if is_on_floor() and !hit and !spell and (!jump_pressd or time_jump > 0.08):
 		jumping = true
-		if time_jump < 0.1 and time_jump!=0:
+		if time_jump < 0.08 and time_jump!=0:
 			velocity.y = jump_speed-(jump_speed/3)
-		elif time_jump > 0.1:
+		elif time_jump >= 0.08:
 			velocity.y = jump_speed
 	if jump_pressd:
 		time_jump +=delta
 	else:
 		time_jump = 0
-	print( time_jump)
+	#print( time_jump)
 	if tp:
 		if coordinat == null:
 			bl = Block.instance()
@@ -183,7 +185,7 @@ func get_input(delta):
 			hit = false
 			$rightA/righthit.disabled = true
 			$leftA/lefthit.disabled = true
-	if  $Anim.frame == 3 and hitv == true:
+	if  $Anim.frame == 4 and hitv == true:
 		hit = false
 		hitv = false
 		$rightA/righthit.disabled = true

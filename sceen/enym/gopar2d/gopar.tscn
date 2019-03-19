@@ -1,226 +1,178 @@
-[gd_scene load_steps=22 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://sceen/enym/gopar/gopar.gd" type="Script" id=1]
-[ext_resource path="res://img/enym/gopnik/гопарьЛ/гопарьЛудар.png" type="Texture" id=2]
-[ext_resource path="res://img/enym/gopnik/гопарьЛ/гопарьЛстоит.png" type="Texture" id=3]
-[ext_resource path="res://img/enym/gopnik/гопарьП/гопарьПудар.png" type="Texture" id=4]
-[ext_resource path="res://img/enym/gopnik/гопарьП/гопарьПстоит.png" type="Texture" id=5]
-[ext_resource path="res://img/enym/gopnik/гопарьЛ/гопарьЛбег1.png" type="Texture" id=6]
-[ext_resource path="res://img/enym/gopnik/гопарьЛ/гопарьЛбег2.png" type="Texture" id=7]
-[ext_resource path="res://img/enym/gopnik/гопарьП/гопарьПбег1.png" type="Texture" id=8]
-[ext_resource path="res://img/enym/gopnik/гопарьП/гопарьПбег2.png" type="Texture" id=9]
-[ext_resource path="res://sceen/enym/gopar/hitR.gd" type="Script" id=10]
-[ext_resource path="res://sceen/enym/gopar/hitL.gd" type="Script" id=11]
-[ext_resource path="res://sceen/enym/gopar/right.gd" type="Script" id=12]
-[ext_resource path="res://sceen/enym/gopar/left.gd" type="Script" id=13]
-[ext_resource path="res://sceen/enym/gopar2d/see.gd" type="Script" id=14]
+[ext_resource path="res://sceen/enym/gopar2d/see.gd" type="Script" id=2]
+[ext_resource path="res://sceen/enym/gopar/hitR.gd" type="Script" id=3]
+[ext_resource path="res://sceen/enym/gopar/hitL.gd" type="Script" id=4]
+[ext_resource path="res://sceen/enym/gopar/right.gd" type="Script" id=5]
+[ext_resource path="res://sceen/enym/gopar/left.gd" type="Script" id=6]
+[ext_resource path="res://img/enym/gopnik/гопарьЛ/гопарьЛбег1.png" type="Texture" id=7]
+[ext_resource path="res://img/enym/gopnik/гопарьЛ/гопарьЛбег2.png" type="Texture" id=8]
+[ext_resource path="res://img/enym/gopnik/гопарьП/гопарьПбег1.png" type="Texture" id=9]
+[ext_resource path="res://img/enym/gopnik/гопарьП/гопарьПбег2.png" type="Texture" id=10]
+[ext_resource path="res://img/enym/gopnik/гопарьП/гопарьПстоит.png" type="Texture" id=11]
+[ext_resource path="res://img/enym/gopnik/гопарьЛ/гопарьЛстоит.png" type="Texture" id=12]
+[ext_resource path="res://img/enym/gopnik/гопарьЛ/гопарьЛудар.png" type="Texture" id=13]
+[ext_resource path="res://img/enym/gopnik/гопарьП/гопарьПудар.png" type="Texture" id=14]
+[ext_resource path="res://sceen/enym/gopar2d/body.gd" type="Script" id=15]
+[ext_resource path="res://sceen/enym/gopar2d/head.gd" type="Script" id=16]
 
 [sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 14.7266, 10 )
 
-custom_solver_bias = 0.0
-extents = Vector2( 9.39999, 10.0628 )
+[sub_resource type="RectangleShape2D" id=2]
+extents = Vector2( 7.8629, 9.7183 )
 
-[sub_resource type="SpriteFrames" id=2]
+[sub_resource type="RectangleShape2D" id=3]
+extents = Vector2( 16.7047, 10 )
 
+[sub_resource type="RectangleShape2D" id=4]
+extents = Vector2( 4.39314, 19.1925 )
+
+[sub_resource type="RectangleShape2D" id=5]
+
+[sub_resource type="RectangleShape2D" id=6]
+extents = Vector2( 9.71881, 1.08969 )
+
+[sub_resource type="SpriteFrames" id=7]
 animations = [ {
-"frames": [ ExtResource( 2 ), ExtResource( 3 ), ExtResource( 3 ) ],
-"loop": true,
-"name": "hit_l",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 4 ), ExtResource( 5 ), ExtResource( 5 ) ],
-"loop": true,
-"name": "hit_r",
-"speed": 3.0
-}, {
-"frames": [ ExtResource( 6 ), ExtResource( 7 ) ],
+"frames": [ ExtResource( 7 ), ExtResource( 8 ) ],
 "loop": true,
 "name": "run_l",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 3 ) ],
-"loop": true,
-"name": "stopl",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 8 ), ExtResource( 9 ) ],
+"frames": [ ExtResource( 9 ), ExtResource( 10 ) ],
 "loop": true,
 "name": "run_r",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 5 ) ],
+"frames": [ ExtResource( 11 ) ],
 "loop": true,
 "name": "stopr",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 3 ), null, ExtResource( 3 ), null, null ],
+"frames": [ ExtResource( 12 ), null, ExtResource( 12 ), null, null ],
+"loop": true,
+"name": "dead_l",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ), null, ExtResource( 12 ), null, null ],
 "loop": true,
 "name": "dead_r",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 3 ), null, ExtResource( 3 ), null, null ],
+"frames": [ ExtResource( 13 ), ExtResource( 12 ), ExtResource( 12 ) ],
 "loop": true,
-"name": "dead_l",
+"name": "hit_l",
 "speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ) ],
+"loop": true,
+"name": "stopl",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ), ExtResource( 11 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "hit_r",
+"speed": 3.0
 } ]
 
-[sub_resource type="RectangleShape2D" id=3]
+[sub_resource type="RectangleShape2D" id=8]
+extents = Vector2( 16.1302, 50.5951 )
 
-custom_solver_bias = 0.0
-extents = Vector2( 6.01296, 10.4626 )
+[sub_resource type="RectangleShape2D" id=9]
+extents = Vector2( 16.1302, 5.34304 )
 
-[sub_resource type="RectangleShape2D" id=4]
-
-custom_solver_bias = 0.0
-extents = Vector2( 10.7737, 10 )
-
-[sub_resource type="RectangleShape2D" id=5]
-
-custom_solver_bias = 0.0
-extents = Vector2( 4.39314, 19.1925 )
-
-[sub_resource type="RectangleShape2D" id=6]
-
-custom_solver_bias = 0.0
-extents = Vector2( 10, 10 )
-
-[sub_resource type="RectangleShape2D" id=7]
-
-custom_solver_bias = 0.0
-extents = Vector2( 14.7266, 10 )
-
-[node name="Gopnik" type="KinematicBody2D" index="0"]
-
-input_pickable = false
-collision_layer = 1
-collision_mask = 1
-collision/safe_margin = 0.08
+[node name="Gopnik" type="KinematicBody2D"]
 script = ExtResource( 1 )
-_sections_unfolded = [ "Transform" ]
-kil = false
-directionR = false
-see = false
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." index="0"]
+[node name="see" type="Area2D" parent="."]
+editor/display_folded = true
+position = Vector2( 1.57678, 4.20473 )
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_group_": true
+}
 
-position = Vector2( 0.269189, 45.4647 )
-scale = Vector2( 2.11876, 4.74094 )
+[node name="CollisionShape2D" type="CollisionShape2D" parent="see"]
+position = Vector2( 10.8056, 19.3582 )
+scale = Vector2( 15.5252, 6.40817 )
 shape = SubResource( 1 )
 
-[node name="Anim" type="AnimatedSprite" parent="." index="1"]
-
-position = Vector2( 0.256332, 0 )
-z_index = 1
-frames = SubResource( 2 )
-animation = "stopl"
-playing = true
-_sections_unfolded = [ "Z Index" ]
-
-[node name="hitR" type="Area2D" parent="." index="2"]
-
+[node name="hitR" type="Area2D" parent="."]
 editor/display_folded = true
 position = Vector2( -66.6428, 13.3285 )
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-audio_bus_override = false
-audio_bus_name = "Master"
-script = ExtResource( 10 )
+script = ExtResource( 3 )
 
-[node name="ChitR" type="CollisionShape2D" parent="hitR" index="0"]
-
-position = Vector2( 108.572, 2.83214 )
+[node name="ChitR" type="CollisionShape2D" parent="hitR"]
+position = Vector2( 89.6507, 4.40891 )
 scale = Vector2( 2.40074, 0.77967 )
-shape = SubResource( 3 )
+shape = SubResource( 2 )
 disabled = true
 
-[node name="hitL" type="Area2D" parent="." index="3"]
-
+[node name="hitL" type="Area2D" parent="."]
 editor/display_folded = true
 position = Vector2( -56.9027, 44.6463 )
 scale = Vector2( 1, 1.44032 )
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-audio_bus_override = false
-audio_bus_name = "Master"
-script = ExtResource( 11 )
+script = ExtResource( 4 )
 
-[node name="ChitL" type="CollisionShape2D" parent="hitL" index="0"]
-
-position = Vector2( 14.736, -19.1661 )
+[node name="ChitL" type="CollisionShape2D" parent="hitL"]
+position = Vector2( 37.862, -18.4363 )
 scale = Vector2( 1.25596, 0.498533 )
-shape = SubResource( 4 )
+shape = SubResource( 3 )
 disabled = true
 
-[node name="right" type="Area2D" parent="." index="4"]
-
+[node name="right" type="Area2D" parent="."]
 editor/display_folded = true
 position = Vector2( 28.3723, 86.9188 )
 scale = Vector2( 1, 1.31701 )
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-audio_bus_override = false
-audio_bus_name = "Master"
-script = ExtResource( 12 )
+script = ExtResource( 5 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="rightC" type="CollisionShape2D" parent="right" index="0"]
-
+[node name="rightC" type="CollisionShape2D" parent="right"]
 position = Vector2( 2.61464, 4.17354 )
 scale = Vector2( 2.10448, 0.2068 )
-shape = SubResource( 5 )
+shape = SubResource( 4 )
 
-[node name="left" type="Area2D" parent="." index="5"]
-
+[node name="left" type="Area2D" parent="."]
 editor/display_folded = true
 position = Vector2( -40.9592, 57.3621 )
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-audio_bus_override = false
-audio_bus_name = "Master"
-script = ExtResource( 13 )
+script = ExtResource( 6 )
 __meta__ = {
 "_edit_group_": true
 }
 
-[node name="leftC" type="CollisionShape2D" parent="left" index="0"]
-
+[node name="leftC" type="CollisionShape2D" parent="left"]
 position = Vector2( 9.55163, 35.8416 )
 scale = Vector2( 0.95757, 0.566022 )
+shape = SubResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -0.781989, 90.6655 )
+scale = Vector2( 2.11876, 4.74094 )
 shape = SubResource( 6 )
 
-[node name="see" type="Area2D" parent="." index="6"]
+[node name="Anim" type="AnimatedSprite" parent="."]
+position = Vector2( 0.256332, 13.4026 )
+scale = Vector2( 1, 0.865974 )
+z_index = 1
+frames = SubResource( 7 )
+animation = "stopl"
+playing = true
 
-editor/display_folded = true
-input_pickable = true
-gravity_vec = Vector2( 0, 1 )
-gravity = 98.0
-linear_damp = 0.1
-angular_damp = 1.0
-audio_bus_override = false
-audio_bus_name = "Master"
-script = ExtResource( 14 )
-__meta__ = {
-"_edit_group_": true
-}
+[node name="body" type="KinematicBody2D" parent="."]
+script = ExtResource( 15 )
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="see" index="0"]
+[node name="Cbody" type="CollisionShape2D" parent="body"]
+position = Vector2( -0.525558, 34.4331 )
+shape = SubResource( 8 )
 
-position = Vector2( 10.8056, 19.3582 )
-scale = Vector2( 15.5252, 6.40817 )
-shape = SubResource( 7 )
+[node name="head" type="Area2D" parent="."]
+script = ExtResource( 16 )
 
+[node name="ahead" type="CollisionShape2D" parent="head"]
+position = Vector2( -0.525604, -28.4331 )
+shape = SubResource( 9 )
 

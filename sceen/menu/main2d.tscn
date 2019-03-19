@@ -10,17 +10,20 @@
 [node name="Node" type="Node"]
 
 [node name="Petyh" parent="." instance=ExtResource( 1 )]
-position = Vector2( 782.892, 608.56 )
+position = Vector2( 337.559, 591.227 )
 scale = Vector2( 0.843736, 0.872223 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( 164.219, 556.953 )
+editor/display_folded = true
+position = Vector2( 102.219, 556.953 )
 z_index = 2
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
-position = Vector2( 3.16063, 47.8239 )
+position = Vector2( 0.790237, 43.238 )
 scale = Vector2( 1.1852, 1.1465 )
 current = true
+zoom = Vector2( 1.2, 1.2 )
+drag_margin_left = 0.22
 
 [node name="StaticBody2D5" type="StaticBody2D" parent="."]
 editor/display_folded = true
@@ -40,7 +43,7 @@ texture = ExtResource( 3 )
 
 [node name="StaticBody2D8" type="StaticBody2D" parent="."]
 editor/display_folded = true
-position = Vector2( 681.054, 498.697 )
+position = Vector2( 853.054, 498.697 )
 scale = Vector2( 11.9572, 0.821237 )
 __meta__ = {
 "_edit_group_": true
@@ -72,7 +75,7 @@ texture = ExtResource( 3 )
 
 [node name="StaticBody2D7" type="StaticBody2D" parent="."]
 editor/display_folded = true
-position = Vector2( 4.92957, 332.352 )
+position = Vector2( -11.0705, 188.352 )
 scale = Vector2( 1.01833, 10.2819 )
 __meta__ = {
 "_edit_group_": true
@@ -88,7 +91,7 @@ texture = ExtResource( 3 )
 
 [node name="StaticBody2D9" type="StaticBody2D" parent="."]
 editor/display_folded = true
-position = Vector2( -337.737, 322.352 )
+position = Vector2( -328.404, 195.685 )
 scale = Vector2( 1.01833, 10.2819 )
 __meta__ = {
 "_edit_group_": true
@@ -103,5 +106,5 @@ shape = SubResource( 1 )
 texture = ExtResource( 3 )
 
 [node name="Gopnik" parent="." instance=ExtResource( 4 )]
-position = Vector2( 555.591, 384.727 )
+position = Vector2( 700.924, 349.394 )
 
