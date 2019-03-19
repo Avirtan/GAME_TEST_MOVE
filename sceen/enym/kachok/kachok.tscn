@@ -1,0 +1,70 @@
+[gd_scene load_steps=13 format=2]
+
+[ext_resource path="res://img/enym/kachok/кочкаЛ/кочкаСтойкаЛ.png" type="Texture" id=1]
+[ext_resource path="res://img/enym/kachok/кочкаЛ/кочкаШаг1Л.png" type="Texture" id=2]
+[ext_resource path="res://img/enym/kachok/кочкаЛ/кочкаШаг2Л.png" type="Texture" id=3]
+[ext_resource path="res://img/enym/kachok/кочкаП/кочкаШаг1П.png" type="Texture" id=4]
+[ext_resource path="res://img/enym/kachok/кочкаП/кочкаШаг2П.png" type="Texture" id=5]
+[ext_resource path="res://img/enym/kachok/кочкаП/кочкаУдарП.png" type="Texture" id=6]
+[ext_resource path="res://img/enym/kachok/кочкаП/кочкаСтойкаП.png" type="Texture" id=7]
+[ext_resource path="res://img/enym/kachok/кочкаЛ/кочкаУдарЛ.png" type="Texture" id=8]
+[ext_resource path="res://img/enym/kachok/кочкаП/кочкаХадоукенП.png" type="Texture" id=9]
+[ext_resource path="res://img/enym/kachok/кочкаЛ/кочкаХадоукенЛ.png" type="Texture" id=10]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 57.8857, 75.7073 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 1 ) ],
+"loop": true,
+"name": "stop_l",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "run_l",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 4 ), ExtResource( 5 ) ],
+"loop": true,
+"name": "run_r",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 6 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "hit_r",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 8 ), ExtResource( 1 ) ],
+"loop": true,
+"name": "hit_l",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": true,
+"name": "had_r",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ) ],
+"loop": true,
+"name": "had_l",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "stop_r",
+"speed": 5.0
+} ]
+
+[node name="KinematicBody2D" type="KinematicBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( 6.66669, 18.6667 )
+shape = SubResource( 1 )
+
+[node name="Anim" type="AnimatedSprite" parent="."]
+frames = SubResource( 2 )
+animation = "hit_r"
+frame = 1
+
