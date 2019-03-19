@@ -37,7 +37,7 @@ var stena = false
 
 func Set_dead():
 	if(!dead):
-		#dead = true
+		dead = true
 		#$pers.disabled = true
 		#$death.disabled = false
 		if moveR:
@@ -45,7 +45,7 @@ func Set_dead():
 		else:
 			$Anim.animation = 'dead_l'
 		#$Anim.animation = 'dead'
-		#velocity = Vector2(0,0)
+		velocity = Vector2(0,0)
 	
 func shoot():
 	var b = Bullet.instance()

@@ -50,7 +50,8 @@ func move():
 	
 
 func _physics_process(delta):
-	if !kil:
+	#print(dead)
+	if !kil and !dead:
 		move()
 		checkDirect()
 		if !$".".see:
@@ -61,14 +62,12 @@ func _physics_process(delta):
 		velocity.y = gravity 
 		move_and_slide(velocity, Vector2(0, -1))
 	elif dead:
-		if !kil:
-			dead()
-		elif $Anim.frame == 3:
+		if $Anim.frame == 3:
 			queue_free()
 func dead():
 	if moveR:
 		$Anim.animation = "dead_r"
 	else:
 		$Anim.animation = "dead_l"
-	kil =true
+	dead = true
 	

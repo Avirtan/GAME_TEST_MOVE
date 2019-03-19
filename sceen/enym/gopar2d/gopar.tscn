@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=2]
+[gd_scene load_steps=27 format=2]
 
 [ext_resource path="res://sceen/enym/gopar/gopar.gd" type="Script" id=1]
 [ext_resource path="res://sceen/enym/gopar2d/see.gd" type="Script" id=2]
@@ -14,17 +14,17 @@
 [ext_resource path="res://img/enym/gopnik/гопарьЛ/гопарьЛстоит.png" type="Texture" id=12]
 [ext_resource path="res://img/enym/gopnik/гопарьЛ/гопарьЛудар.png" type="Texture" id=13]
 [ext_resource path="res://img/enym/gopnik/гопарьП/гопарьПудар.png" type="Texture" id=14]
-[ext_resource path="res://sceen/enym/gopar2d/body.gd" type="Script" id=15]
-[ext_resource path="res://sceen/enym/gopar2d/head.gd" type="Script" id=16]
+[ext_resource path="res://sceen/enym/gopar2d/head.gd" type="Script" id=15]
+[ext_resource path="res://sceen/enym/gopar2d/abody.gd" type="Script" id=16]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 14.7266, 10 )
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 7.8629, 9.7183 )
+extents = Vector2( 5.46457, 9.30462 )
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 16.7047, 10 )
+extents = Vector2( 12.1204, 10 )
 
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 4.39314, 19.1925 )
@@ -82,6 +82,9 @@ extents = Vector2( 16.1302, 50.5951 )
 
 [sub_resource type="RectangleShape2D" id=9]
 extents = Vector2( 16.1302, 5.34304 )
+
+[sub_resource type="RectangleShape2D" id=10]
+extents = Vector2( 26.6663, 50.1587 )
 
 [node name="Gopnik" type="KinematicBody2D"]
 script = ExtResource( 1 )
@@ -163,16 +166,24 @@ animation = "stopl"
 playing = true
 
 [node name="body" type="KinematicBody2D" parent="."]
-script = ExtResource( 15 )
+editor/display_folded = true
 
 [node name="Cbody" type="CollisionShape2D" parent="body"]
 position = Vector2( -0.525558, 34.4331 )
 shape = SubResource( 8 )
 
 [node name="head" type="Area2D" parent="."]
-script = ExtResource( 16 )
+editor/display_folded = true
+script = ExtResource( 15 )
 
 [node name="ahead" type="CollisionShape2D" parent="head"]
 position = Vector2( -0.525604, -28.4331 )
 shape = SubResource( 9 )
+
+[node name="abody" type="Area2D" parent="."]
+script = ExtResource( 16 )
+
+[node name="Cbody" type="CollisionShape2D" parent="abody"]
+position = Vector2( 1.05121, 30.4843 )
+shape = SubResource( 10 )
 

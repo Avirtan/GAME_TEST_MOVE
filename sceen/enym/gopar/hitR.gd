@@ -8,7 +8,7 @@ func _physics_process(delta):
 			if i.get_name() == "right" or i.get_name() == "left":
 				if !$"../../Player/right/righthit".disabled or !$"../../Player/left/lefthit".disabled :
 					$"..".dead = true
-					$"..".queue_free()
+					#$"..".queue_free()
 			else:
 				if i.has_method("Set_dead"):
 					$"../Anim".animation = "hit_r"
