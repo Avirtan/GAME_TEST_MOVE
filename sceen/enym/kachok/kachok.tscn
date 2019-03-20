@@ -42,12 +42,12 @@ animations = [ {
 "name": "hit_l",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 10 ), ExtResource( 10 ) ],
+"frames": [ ExtResource( 10 ), ExtResource( 10 ), ExtResource( 10 ) ],
 "loop": true,
 "name": "had_r",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 11 ), ExtResource( 11 ) ],
+"frames": [ ExtResource( 11 ), ExtResource( 11 ), ExtResource( 11 ) ],
 "loop": true,
 "name": "had_l",
 "speed": 5.0
@@ -82,6 +82,7 @@ script = ExtResource( 1 )
 [node name="Anim" type="AnimatedSprite" parent="."]
 frames = SubResource( 2 )
 animation = "hit_l"
+frame = 1
 playing = true
 
 [node name="body" type="CollisionShape2D" parent="."]

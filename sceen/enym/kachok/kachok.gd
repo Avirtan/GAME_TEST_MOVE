@@ -64,6 +64,6 @@ func _physics_process(delta):
 	velocity.x = (direction.x*distance.x)/delta
 	velocity.y = gravity 
 	#print(velocity.x)
-	if shoot and $Anim.frame == 1:
+	if shoot and $Anim.frame == 2:
 		shoot = false
 	move_and_slide(velocity, Vector2(0, -1))
