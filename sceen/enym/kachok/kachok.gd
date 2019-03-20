@@ -14,6 +14,7 @@ export (bool) var dead = false
 var gravity = 400
 var time = -1
 var shoot = false
+var r = 4
 
 func shoot():
 	shoot = true
@@ -52,13 +53,14 @@ func _physics_process(delta):
 	checkDirect()
 	if $Timer.time_left >= 0.9 and  $Timer.time_left < 1:
 		time+=1
-	if time > 3:
+	if time > r:
+		r = rand_range(10,20)
 		shoot()
 		time = 0
 	print(time)#$Timer.time_left)
 	#print(rand_range(1,11))
 	distance.x = speed*delta
-	direction.x = -1
+	direction.x = 0
 	velocity.x = (direction.x*distance.x)/delta
 	velocity.y = gravity 
 	#print(velocity.x)
