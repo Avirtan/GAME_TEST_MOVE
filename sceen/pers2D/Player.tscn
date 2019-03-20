@@ -156,7 +156,7 @@ extents = Vector2( 7.52075, 5.07898 )
 extents = Vector2( 20.862, 10 )
 
 [sub_resource type="RectangleShape2D" id=7]
-extents = Vector2( 59.2841, 3.06686 )
+extents = Vector2( 22.8425, 3.06686 )
 
 [node name="Player" type="KinematicBody2D"]
 scale = Vector2( 0.843736, 0.872223 )
@@ -171,7 +171,6 @@ shape = SubResource( 1 )
 position = Vector2( 3.55563, 0 )
 frames = SubResource( 2 )
 animation = "Stop_L"
-frame = 1
 playing = true
 
 [node name="right" type="Area2D" parent="."]
@@ -223,7 +222,7 @@ scale = Vector2( 0.295586, 1.33549 )
 shape = SubResource( 6 )
 
 [node name="death" type="CollisionShape2D" parent="."]
-position = Vector2( 2.80322, 89.4843 )
+position = Vector2( 1.61802, 87.1913 )
 shape = SubResource( 7 )
 disabled = true
 
