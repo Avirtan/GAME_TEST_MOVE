@@ -7,7 +7,6 @@ func _physics_process(delta):
 	for  i in r:
 		if !i.has_method("dead")  and i.get_name() != "Player" and r.size()==1 and i.get_name() != "Petyh" and i.get_name() != "Gopnik":
 			f = true
-			print(i.get_name())
 		if i.get_name() == "Player" and r.size() == 1:
 			f = false
 			"""$"..".left = true

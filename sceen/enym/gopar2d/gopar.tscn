@@ -6,14 +6,14 @@
 [ext_resource path="res://sceen/enym/gopar/hitL.gd" type="Script" id=4]
 [ext_resource path="res://sceen/enym/gopar/right.gd" type="Script" id=5]
 [ext_resource path="res://sceen/enym/gopar/left.gd" type="Script" id=6]
-[ext_resource path="res://img/enym/gopnik/гопарьЛ/гопарьЛбег1.png" type="Texture" id=7]
-[ext_resource path="res://img/enym/gopnik/гопарьЛ/гопарьЛбег2.png" type="Texture" id=8]
-[ext_resource path="res://img/enym/gopnik/гопарьП/гопарьПбег1.png" type="Texture" id=9]
-[ext_resource path="res://img/enym/gopnik/гопарьП/гопарьПбег2.png" type="Texture" id=10]
-[ext_resource path="res://img/enym/gopnik/гопарьП/гопарьПстоит.png" type="Texture" id=11]
-[ext_resource path="res://img/enym/gopnik/гопарьЛ/гопарьЛстоит.png" type="Texture" id=12]
-[ext_resource path="res://img/enym/gopnik/гопарьЛ/гопарьЛудар.png" type="Texture" id=13]
-[ext_resource path="res://img/enym/gopnik/гопарьП/гопарьПудар.png" type="Texture" id=14]
+[ext_resource path="res://img/enym/gopnik/гопарьЛ/гопарьЛстоит.png" type="Texture" id=7]
+[ext_resource path="res://img/enym/gopnik/гопарьЛ/гопарьЛбег1.png" type="Texture" id=8]
+[ext_resource path="res://img/enym/gopnik/гопарьЛ/гопарьЛбег2.png" type="Texture" id=9]
+[ext_resource path="res://img/enym/gopnik/гопарьП/гопарьПбег1.png" type="Texture" id=10]
+[ext_resource path="res://img/enym/gopnik/гопарьП/гопарьПбег2.png" type="Texture" id=11]
+[ext_resource path="res://img/enym/gopnik/гопарьП/гопарьПстоит.png" type="Texture" id=12]
+[ext_resource path="res://img/enym/gopnik/гопарьП/гопарьПудар.png" type="Texture" id=13]
+[ext_resource path="res://img/enym/gopnik/гопарьЛ/гопарьЛудар.png" type="Texture" id=14]
 [ext_resource path="res://sceen/enym/gopar2d/head.gd" type="Script" id=15]
 [ext_resource path="res://sceen/enym/gopar2d/abody.gd" type="Script" id=16]
 
@@ -36,52 +36,52 @@ extents = Vector2( 9.71881, 1.08969 )
 
 [sub_resource type="SpriteFrames" id=7]
 animations = [ {
-"frames": [ ExtResource( 7 ), ExtResource( 8 ) ],
-"loop": true,
-"name": "run_l",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 9 ), ExtResource( 10 ) ],
-"loop": true,
-"name": "run_r",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 11 ) ],
-"loop": true,
-"name": "stopr",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 12 ), null, ExtResource( 12 ), null, null ],
-"loop": true,
-"name": "dead_l",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 12 ), null, ExtResource( 12 ), null, null ],
+"frames": [ ExtResource( 7 ), null, ExtResource( 7 ), null, null ],
 "loop": true,
 "name": "dead_r",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 13 ), ExtResource( 12 ), ExtResource( 12 ) ],
+"frames": [ ExtResource( 8 ), ExtResource( 9 ) ],
 "loop": true,
-"name": "hit_l",
+"name": "run_l",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 10 ), ExtResource( 11 ) ],
+"loop": true,
+"name": "run_r",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 7 ), null, ExtResource( 7 ), null, null ],
+"loop": true,
+"name": "dead_l",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 12 ) ],
 "loop": true,
-"name": "stopl",
+"name": "stopr",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 14 ), ExtResource( 11 ), ExtResource( 11 ) ],
+"frames": [ ExtResource( 13 ), ExtResource( 12 ), ExtResource( 12 ) ],
 "loop": true,
 "name": "hit_r",
 "speed": 3.0
+}, {
+"frames": [ ExtResource( 7 ) ],
+"loop": true,
+"name": "stopl",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 14 ), ExtResource( 7 ), ExtResource( 7 ) ],
+"loop": true,
+"name": "hit_l",
+"speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=8]
 extents = Vector2( 16.1302, 50.5951 )
 
 [sub_resource type="RectangleShape2D" id=9]
-extents = Vector2( 16.1302, 5.34304 )
+extents = Vector2( 24.5636, 5.34304 )
 
 [sub_resource type="RectangleShape2D" id=10]
 extents = Vector2( 26.6663, 50.1587 )
@@ -158,7 +158,7 @@ scale = Vector2( 2.11876, 4.74094 )
 shape = SubResource( 6 )
 
 [node name="Anim" type="AnimatedSprite" parent="."]
-position = Vector2( 0.256332, 13.4026 )
+position = Vector2( -0.269272, 13.4026 )
 scale = Vector2( 1, 0.865974 )
 z_index = 1
 frames = SubResource( 7 )
@@ -173,7 +173,6 @@ position = Vector2( -0.525558, 34.4331 )
 shape = SubResource( 8 )
 
 [node name="head" type="Area2D" parent="."]
-editor/display_folded = true
 script = ExtResource( 15 )
 
 [node name="ahead" type="CollisionShape2D" parent="head"]
@@ -184,6 +183,6 @@ shape = SubResource( 9 )
 script = ExtResource( 16 )
 
 [node name="Cbody" type="CollisionShape2D" parent="abody"]
-position = Vector2( 1.05121, 30.4843 )
+position = Vector2( 0.525606, 30.4843 )
 shape = SubResource( 10 )
 

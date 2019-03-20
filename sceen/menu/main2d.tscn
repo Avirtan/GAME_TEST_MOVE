@@ -1,21 +1,22 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://sceen/enym/petyh/petyh.tscn" type="PackedScene" id=1]
 [ext_resource path="res://sceen/pers2D/Player.tscn" type="PackedScene" id=2]
 [ext_resource path="res://icon.png" type="Texture" id=3]
 [ext_resource path="res://sceen/enym/gopar2d/gopar.tscn" type="PackedScene" id=4]
+[ext_resource path="res://sceen/enym/kachok/kachok.tscn" type="PackedScene" id=5]
 
 [sub_resource type="RectangleShape2D" id=1]
 
 [node name="Node" type="Node"]
 
 [node name="Petyh" parent="." instance=ExtResource( 1 )]
-position = Vector2( 337.559, 591.227 )
+position = Vector2( -272.663, 593.005 )
 scale = Vector2( 0.843736, 0.872223 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
 editor/display_folded = true
-position = Vector2( 102.219, 556.953 )
+position = Vector2( -15.5588, 575.62 )
 z_index = 2
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -106,5 +107,8 @@ shape = SubResource( 1 )
 texture = ExtResource( 3 )
 
 [node name="Gopnik" parent="." instance=ExtResource( 4 )]
-position = Vector2( 700.924, 349.394 )
+position = Vector2( 545.369, 372.505 )
+
+[node name="Kachock" parent="." instance=ExtResource( 5 )]
+position = Vector2( 231.111, 571.556 )
 
