@@ -281,3 +281,6 @@ func _on_Area2D_body_entered(body):
 		#velocity.y -=gravity/12 * delta
 		#velocity.y +=run_speed/12#gravity * delta
 		velocity.y +=run_speed/12"""
+
+func _on_Button_pressed():
+	dead = false

@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://sceen/enym/petyh/petyh.tscn" type="PackedScene" id=1]
 [ext_resource path="res://sceen/pers2D/Player.tscn" type="PackedScene" id=2]
-[ext_resource path="res://icon.png" type="Texture" id=3]
-[ext_resource path="res://sceen/enym/gopar2d/gopar.tscn" type="PackedScene" id=4]
-[ext_resource path="res://sceen/enym/kachok/kachok.tscn" type="PackedScene" id=5]
+[ext_resource path="res://sceen/menu/Button.gd" type="Script" id=3]
+[ext_resource path="res://icon.png" type="Texture" id=4]
+[ext_resource path="res://sceen/enym/gopar2d/gopar.tscn" type="PackedScene" id=5]
+[ext_resource path="res://sceen/enym/kachok/kachok.tscn" type="PackedScene" id=6]
 
 [sub_resource type="RectangleShape2D" id=1]
 
@@ -15,7 +16,6 @@ position = Vector2( -272.663, 593.005 )
 scale = Vector2( 0.843736, 0.872223 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-editor/display_folded = true
 position = Vector2( -15.5588, 575.62 )
 z_index = 2
 
@@ -25,6 +25,14 @@ scale = Vector2( 1.1852, 1.1465 )
 current = true
 zoom = Vector2( 1.2, 1.2 )
 drag_margin_left = 0.22
+
+[node name="Button" type="Button" parent="Player"]
+margin_left = 122.986
+margin_top = -143.503
+margin_right = 367.986
+margin_bottom = -95.5034
+action_mode = 0
+script = ExtResource( 3 )
 
 [node name="StaticBody2D5" type="StaticBody2D" parent="."]
 editor/display_folded = true
@@ -40,7 +48,7 @@ scale = Vector2( 2.42581, 2.50667 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="StaticBody2D5"]
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 
 [node name="StaticBody2D8" type="StaticBody2D" parent="."]
 editor/display_folded = true
@@ -56,7 +64,7 @@ scale = Vector2( 2.42581, 2.50667 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="StaticBody2D8"]
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 
 [node name="StaticBody2D6" type="StaticBody2D" parent="."]
 editor/display_folded = true
@@ -72,7 +80,7 @@ scale = Vector2( 2.42581, 2.50667 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="StaticBody2D6"]
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 
 [node name="StaticBody2D7" type="StaticBody2D" parent="."]
 editor/display_folded = true
@@ -88,7 +96,7 @@ scale = Vector2( 2.42581, 2.50667 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="StaticBody2D7"]
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 
 [node name="StaticBody2D9" type="StaticBody2D" parent="."]
 editor/display_folded = true
@@ -104,11 +112,12 @@ scale = Vector2( 2.42581, 2.50667 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="StaticBody2D9"]
-texture = ExtResource( 3 )
+texture = ExtResource( 4 )
 
-[node name="Gopnik" parent="." instance=ExtResource( 4 )]
+[node name="Gopnik" parent="." instance=ExtResource( 5 )]
 position = Vector2( 545.369, 372.505 )
 
-[node name="Kachock" parent="." instance=ExtResource( 5 )]
+[node name="Kachock" parent="." instance=ExtResource( 6 )]
 position = Vector2( 424.445, 571.556 )
 
+[connection signal="pressed" from="Player/Button" to="Player" method="_on_Button_pressed"]
