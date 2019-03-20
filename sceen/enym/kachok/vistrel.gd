@@ -12,9 +12,11 @@ func start(pos, dir,napr):
 	position = pos
 	moveR = napr
 	if moveR:
+		$AnimatedSprite.animation = "move_r"
 		position.x +=100
 		velocity = Vector2(speed, 0)
 	else:
+		$AnimatedSprite.animation = "move_l"
 		position.x -=100
 		velocity = Vector2(-speed, 0)
 
