@@ -201,23 +201,22 @@ func get_input(delta):
 func _physics_process(delta):
 	if(!dead):
 		get_input(delta)
-	else:
-		if($Anim.frame == 4 and $Anim.playing):
-			$Anim.stop()
-	if ($".".left or $".".right) and velocity.y > -100  and !is_on_floor():
-		if time == -1:
-			time = 0
+		if ($".".left or $".".right) and velocity.y > -100  and !is_on_floor():
+			if time == -1:
+				time = 0
 		if($".".right and !hit):
 			$Anim.animation = "Stena_R"
 		elif($".".left and !hit):
 			$Anim.animation = "Stena_L"
-		stena = true
-		#velocity.y += gravity/5 * delta
-	else :
-	#elif !$".".left and !$".".right and  !is_on_floor():
-		stena = false
-		time = -1
-	#print(time)
+			stena = true
+		else:
+			stena = false
+			time = -1
+	else:
+		if($Anim.frame == 4 and $Anim.playing):
+			$Anim.stop()
+	
+
 	if stena:
 		velocity.y += gravity/8 * delta
 		time+=delta
