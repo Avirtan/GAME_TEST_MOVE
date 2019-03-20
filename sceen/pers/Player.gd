@@ -38,8 +38,8 @@ var stena = false
 func Set_dead():
 	if(!dead):
 		dead = true
-		#$pers.disabled = true
-		#$death.disabled = false
+		$pers.disabled = true
+		$death.disabled = false
 		if moveR:
 			$Anim.animation = 'dead_r'
 		else:

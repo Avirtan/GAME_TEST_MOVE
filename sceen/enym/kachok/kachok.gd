@@ -1,12 +1,9 @@
 extends KinematicBody2D
 
+var Bullet = preload("res://sceen/enym/kachok/vistrel.tscn")
 
 var moveR = false
 var speed = 100
-var l = 0
-var top = false
-var P = Vector2()
-var G = Vector2()
 var distance = Vector2()
 var velocity = Vector2()
 var direction = Vector2()
@@ -15,7 +12,18 @@ export (bool) var directionR = false
 export (bool) var see = false
 export (bool) var dead = false
 var gravity = 400
+var time = -1
+var shoot = false
 
+func shoot():
+	shoot = true
+	if moveR:
+		$Anim.animation = "had_r"
+	else:
+		$Anim.animation = "had_l"
+	var b = Bullet.instance()
+	b.start(self.global_position, rotation,moveR)
+	get_parent().add_child(b)
 
 func checkDirect():
 	if velocity.x > 0:
@@ -27,21 +35,33 @@ func checkDirect():
 		$"hitl/hit".disabled = false
 		moveR = false
 	if velocity.x!=0:
-		if moveR:
+		if moveR and !shoot:
 			$Anim.animation = "run_r"
-		else:
+		elif !moveR and !shoot:
 			$Anim.animation = "run_l" 
 	elif velocity.x==0:
-		if moveR:
+		if moveR and !shoot:
 			$Anim.animation = "stop_r"
-		else:
+		elif !moveR and !shoot:
 			$Anim.animation = "stop_l" 
 	
+func _ready():
+	$Timer.start()
+
 func _physics_process(delta):
 	checkDirect()
+	if $Timer.time_left >= 0.9 and  $Timer.time_left < 1:
+		time+=1
+	if time > 3:
+		shoot()
+		time = 0
+	print(time)#$Timer.time_left)
+	#print(rand_range(1,11))
 	distance.x = speed*delta
 	direction.x = -1
 	velocity.x = (direction.x*distance.x)/delta
 	velocity.y = gravity 
-	print(velocity.x)
+	#print(velocity.x)
+	if shoot and $Anim.frame == 1:
+		shoot = false
 	move_and_slide(velocity, Vector2(0, -1))

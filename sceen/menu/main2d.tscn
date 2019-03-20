@@ -110,5 +110,5 @@ texture = ExtResource( 3 )
 position = Vector2( 545.369, 372.505 )
 
 [node name="Kachock" parent="." instance=ExtResource( 5 )]
-position = Vector2( 231.111, 571.556 )
+position = Vector2( 424.445, 571.556 )
 
