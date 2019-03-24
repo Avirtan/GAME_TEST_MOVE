@@ -52,7 +52,6 @@ func shoot():
 	b.start(self.global_position, rotation,moveR)
 	get_parent().add_child(b)
 
-
 func get_input(delta):
 	velocity.x = 0
 	run_l = Input.is_action_pressed('ui_left')
@@ -213,7 +212,6 @@ func _physics_process(delta):
 		else:
 			stena = false
 			time = -1
-		
 	else:
 		if($Anim.frame == 4 and $Anim.playing):
 			$Anim.stop()

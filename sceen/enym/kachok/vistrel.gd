@@ -1,7 +1,7 @@
 extends KinematicBody2D
 
 func _ready():
-	pass # Replace with function body.
+	pass 
 
 var speed = 200
 var velocity = Vector2()
@@ -28,7 +28,6 @@ func _physics_process(delta):
 		if get_col.collider.has_method("Set_dead"):
 			get_col.collider.Set_dead()
 			delete()
-		print(get_col.collider.get_name())
 		delete()
 	if $"../Player/Camera2D".global_position.x > global_position.x+800:
 		delete()

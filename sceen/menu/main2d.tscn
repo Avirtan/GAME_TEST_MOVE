@@ -16,6 +16,7 @@ position = Vector2( -436.663, 593.005 )
 scale = Vector2( 0.843736, 0.872223 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
+editor/display_folded = true
 position = Vector2( -15.5588, 575.62 )
 z_index = 2
 
