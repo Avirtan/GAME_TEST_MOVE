@@ -216,8 +216,8 @@ func _physics_process(delta):
 		if($Anim.frame == 4 and $Anim.playing):
 			$Anim.stop()
 	
-
 	if stena:
+		velocity.y +=0
 		velocity.y += gravity/8 * delta
 		time+=delta
 	else:
@@ -283,4 +283,6 @@ func _on_Area2D_body_entered(body):
 		velocity.y +=run_speed/12"""
 
 func _on_Button_pressed():
+	$pers.disabled = false
+	$death.disabled = true
 	dead = false

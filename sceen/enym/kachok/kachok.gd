@@ -57,7 +57,7 @@ func _physics_process(delta):
 		r = rand_range(10,20)
 		shoot()
 		time = 0
-	print(time)#$Timer.time_left)
+	#print(time)#$Timer.time_left)
 	#print(rand_range(1,11))
 	distance.x = speed*delta
 	direction.x = 0
