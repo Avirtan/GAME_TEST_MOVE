@@ -12,7 +12,7 @@
 [node name="Node" type="Node"]
 
 [node name="Petyh" parent="." instance=ExtResource( 1 )]
-position = Vector2( -272.663, 593.005 )
+position = Vector2( -436.663, 593.005 )
 scale = Vector2( 0.843736, 0.872223 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
