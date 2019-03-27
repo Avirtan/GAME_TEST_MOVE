@@ -67,3 +67,6 @@ func _physics_process(delta):
 	if shoot and $Anim.frame == 2:
 		shoot = false
 	move_and_slide(velocity, Vector2(0, -1))
+
+func dead():
+	pass

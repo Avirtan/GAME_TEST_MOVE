@@ -5,7 +5,7 @@ var f = false
 func _physics_process(delta):
 	var r = get_overlapping_bodies()
 	for  i in r:
-		if !i.has_method("dead")  and i.get_name() != "Player" and r.size()==1 and i.get_name() != "Petyh" and i.get_name() != "Gopnik":
+		if !i.has_method("dead")  and i.get_name() != "Player" and r.size()==1 :
 			f = true
 		if i.get_name() == "Player" and r.size() == 1:
 			f = false

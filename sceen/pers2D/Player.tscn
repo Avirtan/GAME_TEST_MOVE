@@ -171,10 +171,11 @@ shape = SubResource( 1 )
 position = Vector2( 3.55563, 0 )
 frames = SubResource( 2 )
 animation = "Stop_L"
-frame = 3
+frame = 4
 playing = true
 
 [node name="right" type="Area2D" parent="."]
+editor/display_folded = true
 position = Vector2( 43.7965, 5.51489 )
 scale = Vector2( 0.198106, 1.00286 )
 script = ExtResource( 44 )
@@ -188,6 +189,7 @@ scale = Vector2( 0.526982, 2.19549 )
 shape = SubResource( 3 )
 
 [node name="rightA" type="Area2D" parent="."]
+editor/display_folded = true
 position = Vector2( 60.4245, 20.2793 )
 scale = Vector2( 1, 2.26912 )
 script = ExtResource( 45 )
@@ -199,6 +201,7 @@ shape = SubResource( 4 )
 disabled = true
 
 [node name="leftA" type="Area2D" parent="."]
+editor/display_folded = true
 position = Vector2( -54.7535, 21.1055 )
 scale = Vector2( 0.846286, 2.28096 )
 script = ExtResource( 46 )
@@ -210,6 +213,7 @@ shape = SubResource( 5 )
 disabled = true
 
 [node name="left" type="Area2D" parent="."]
+editor/display_folded = true
 position = Vector2( -38.0154, 25.3236 )
 scale = Vector2( 0.212114, 1.6313 )
 script = ExtResource( 47 )

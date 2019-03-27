@@ -13,7 +13,7 @@ func _physics_process(delta):
 	#	prH_p = false
 	for i in r:
 		if i.get_name() == "Player":
-			$"../body/Cbody".disabled = true
+			$"../Cbody".disabled = true
 			#prH_p = true
 		#elif r.size() > 0:
 			#prH = true
