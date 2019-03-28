@@ -19,6 +19,10 @@ func move(delta):
 		direction.x = -1
 	P = $"../Player".global_position
 	V = global_position
+	if abs(V.x - P.x) >= 200:
+		runs =true
+	else:
+		runs = false
 	if V.x - P.x < 0:
 		direction.x = 1
 	elif V.x - P.x > 0:
