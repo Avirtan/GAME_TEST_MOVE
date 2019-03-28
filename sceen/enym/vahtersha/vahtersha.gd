@@ -13,9 +13,17 @@ var gravity = 400
 export (bool) var runs = false
 
 func move(delta):
-
+	"""if directionR:
+		direction.x = 1
+	else:
+		direction.x = -1"""
 	P = $"../Player".global_position
 	V = global_position
+	if runs and V.x - P.x > 0 and moveR:
+		runs = false
+	if runs and V.x - P.x < 0 and !moveR:
+		runs = false
+		
 	if V.x - P.x < 0 and !runs:
 		direction.x = 1
 	elif V.x - P.x > 0 and !runs:
