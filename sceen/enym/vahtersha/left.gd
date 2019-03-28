@@ -10,6 +10,15 @@ func _ready():
 
 func _physics_process(delta):
 	var r = get_overlapping_bodies()
-	for  i in r:
-		if !i.has_method("dead")  and i.get_name() != "Player" and r.size()==2:
-			$"..".directionR = true
+	if(!$"..".kill):
+		for  i in r:
+			if !i.has_method("dead")  and i.get_name() != "Player" and r.size()==2:
+				$"..".directionR = true
+			elif i.get_name() == "Player":
+				i.Set_dead()
+				$"..".kill = true
+				$"../Anim".animation = "hit_l"
+	if($"../Anim".frame == 2 and $"..".kill):
+		$"../Anim".animation = "hod"
+		$"../Anim".frame = 0
+		$"../Anim".playing = false

@@ -1,5 +1,6 @@
 extends KinematicBody2D
 
+export (bool) var kill = false
 var moveR = false
 var distance = Vector2()
 var velocity = Vector2()
@@ -11,7 +12,7 @@ var speed = 80
 var gravity = 400
 var runs = false
 
-func move():
+func move(delta):
 	if directionR:
 		direction.x = 1
 	else:
@@ -22,6 +23,9 @@ func move():
 		direction.x = 1
 	elif V.x - P.x > 0:
 		direction.x = -1
+	distance.x = speed*delta
+	velocity.x = (direction.x*distance.x)/delta
+	velocity.y = gravity 
 
 func checkDirect():
 	if velocity.x > 0:
@@ -45,16 +49,16 @@ func checkDirect():
 		else:
 			pass
 			#$Anim.animation = "stopl" 
+
 func _ready():
 	runs = false
 
 func _physics_process(delta):
-	move()
-	checkDirect()
-	distance.x = speed*delta
-	velocity.x = (direction.x*distance.x)/delta
-	velocity.y = gravity 
-	move_and_slide(velocity, Vector2(0, -1))
+	if(!kill):
+		checkDirect()
+		move(delta)
+		move_and_slide(velocity, Vector2(0, -1))
+	
 
 func dead():
 	pass

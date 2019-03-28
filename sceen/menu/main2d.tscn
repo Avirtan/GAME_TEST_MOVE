@@ -38,8 +38,8 @@ script = ExtResource( 3 )
 
 [node name="StaticBody2D5" type="StaticBody2D" parent="."]
 editor/display_folded = true
-position = Vector2( 612.022, 676.838 )
-scale = Vector2( 316.862, 1.26915 )
+position = Vector2( 604.422, 697.738 )
+scale = Vector2( 320.982, 2.20997 )
 __meta__ = {
 "_edit_group_": true
 }
