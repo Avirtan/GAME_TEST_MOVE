@@ -56,6 +56,11 @@ animations = [ {
 "name": "hit_r",
 "speed": 3.0
 }, {
+"frames": [ ExtResource( 11 ), null, ExtResource( 11 ), null, null ],
+"loop": true,
+"name": "dead_l",
+"speed": 5.0
+}, {
 "frames": [ ExtResource( 11 ) ],
 "loop": true,
 "name": "stopl",
@@ -69,11 +74,6 @@ animations = [ {
 "frames": [ ExtResource( 13 ) ],
 "loop": true,
 "name": "stopr",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 11 ), null, ExtResource( 11 ), null, null ],
-"loop": true,
-"name": "dead_l",
 "speed": 5.0
 } ]
 
