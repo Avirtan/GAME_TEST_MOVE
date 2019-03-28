@@ -10,23 +10,18 @@ var V = Vector2()
 export (bool) var directionR = false
 var speed = 80
 var gravity = 400
-var runs = false
+export (bool) var runs = false
 
 func move(delta):
-	if directionR:
-		direction.x = 1
-	else:
-		direction.x = -1
+
 	P = $"../Player".global_position
 	V = global_position
-	if abs(V.x - P.x) >= 200:
-		runs =true
-	else:
-		runs = false
-	if V.x - P.x < 0:
+	if V.x - P.x < 0 and !runs:
 		direction.x = 1
-	elif V.x - P.x > 0:
+	elif V.x - P.x > 0 and !runs:
 		direction.x = -1
+	if abs(V.x - P.x) >= 500:
+		runs = true
 	distance.x = speed*delta
 	velocity.x = (direction.x*distance.x)/delta
 	velocity.y = gravity 

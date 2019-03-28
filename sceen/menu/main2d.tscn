@@ -134,7 +134,7 @@ texture = ExtResource( 4 )
 
 [node name="StaticBody2D11" type="StaticBody2D" parent="."]
 editor/display_folded = true
-position = Vector2( -1981.4, 306.685 )
+position = Vector2( -2460.2, 285.785 )
 scale = Vector2( 1.01833, 10.2819 )
 __meta__ = {
 "_edit_group_": true

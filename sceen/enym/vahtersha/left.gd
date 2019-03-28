@@ -14,6 +14,7 @@ func _physics_process(delta):
 		for  i in r:
 			if !i.has_method("dead")  and i.get_name() != "Player" and r.size()==2:
 				$"..".directionR = true
+				$"..".runs = false
 			elif i.get_name() == "Player":
 				i.Set_dead()
 				$"..".kill = true
