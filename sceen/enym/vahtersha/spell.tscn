@@ -9,7 +9,7 @@
 radius = 12.191
 
 [sub_resource type="CircleShape2D" id=2]
-radius = 13.8544
+radius = 17.2313
 
 [sub_resource type="SpriteFrames" id=3]
 animations = [ {
