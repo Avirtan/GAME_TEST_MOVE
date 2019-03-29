@@ -13,7 +13,7 @@ export (bool) var directionR = false
 var speed = 80
 var gravity = 400
 export (bool) var runs = false
-var time = -1
+var time = 0
 var r = 4
 var shoot = false
 
@@ -69,16 +69,18 @@ func checkDirect():
 		else:
 			pass
 			#$Anim.animation = "stopl" """
-func shooting():
-	if $Timer.time_left >= 0.9 and  $Timer.time_left < 1:
-			time+=1
+func shooting(delta):
+	if $Timer.time_left >= 0.9 and  $Timer.time_left < 1 and !runs:
+		time+=1
+	elif $Timer.time_left >= 0.5 and  $Timer.time_left < 1 and runs:
+		time+=1
 	if time > r and !runs:
 		r = rand_range(5,8)
 		#print($"../Player".global_position)
 		shoot()
 		shoot = true
 		time = 0
-	if runs and !moveR and time >= 2:
+	if runs and !moveR and time > 3:
 		shoot()
 		time = 0
 	print(time)	
@@ -94,7 +96,7 @@ func _physics_process(delta):
 	if(!kill):
 		checkDirect()
 		move(delta)
-		shooting()
+		shooting(delta)
 		move_and_slide(velocity, Vector2(0, -1))
 	
 

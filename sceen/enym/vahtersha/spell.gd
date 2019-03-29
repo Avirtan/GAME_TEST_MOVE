@@ -10,6 +10,7 @@ var get_col = null
 var p = Vector2()
 var tr = 0
 var runs = false
+
 func start(pos,d, dir,napr,run):
 	runs = run
 	rotation = dir
@@ -29,6 +30,7 @@ func start(pos,d, dir,napr,run):
 			position.y -=80
 			velocity = Vector2(-speed, 0)
 		else:
+			$Anim.animation = "run_r"
 			position.x -=75
 			position.y -=80
 			velocity = Vector2(0, -speed)
@@ -40,6 +42,8 @@ func start(pos,d, dir,napr,run):
 func _physics_process(delta):
 	if !runs:
 		position.y +=tr
+	if runs:
+		position.y -=2
 	#print("p: ",p.y," spell:",global_position.y)
 	move_and_slide(velocity)
 	if get_slide_count() != 0 :
