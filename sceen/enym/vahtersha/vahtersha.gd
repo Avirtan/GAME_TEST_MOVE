@@ -78,10 +78,10 @@ func shooting():
 		shoot()
 		shoot = true
 		time = 0
-	if runs and !moveR and time == 2:
+	if runs and !moveR and time >= 2:
 		shoot()
 		time = 0
-		
+	print(time)	
 	if(shoot and $Anim.frame == 1):
 		shoot = false
 
