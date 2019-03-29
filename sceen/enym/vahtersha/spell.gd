@@ -3,7 +3,7 @@ extends KinematicBody2D
 func _ready():
 	pass # Replace with function body.
 
-var speed = 200
+var speed = 400
 var velocity = Vector2()
 var moveR = false
 var get_col = null

@@ -80,7 +80,7 @@ func _physics_process(delta):
 		move(delta)
 		if $Timer.time_left >= 0.9 and  $Timer.time_left < 1:
 			time+=1
-		if time > r:
+		if time > r and !runs:
 			r = rand_range(10,20)
 			#print($"../Player".global_position)
 			shoot()
