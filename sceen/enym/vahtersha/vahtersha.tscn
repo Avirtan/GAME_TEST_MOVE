@@ -1,20 +1,21 @@
-[gd_scene load_steps=20 format=2]
+[gd_scene load_steps=22 format=2]
 
 [ext_resource path="res://sceen/enym/vahtersha/vahtersha.gd" type="Script" id=1]
 [ext_resource path="res://img/enym/Вахтёрша/бегЛ/бег1.png" type="Texture" id=2]
 [ext_resource path="res://img/enym/Вахтёрша/бегЛ/бег2.png" type="Texture" id=3]
 [ext_resource path="res://img/enym/Вахтёрша/бегП/бегП1.png" type="Texture" id=4]
 [ext_resource path="res://img/enym/Вахтёрша/бегП/бегП2.png" type="Texture" id=5]
-[ext_resource path="res://img/enym/Вахтёрша/когтиП/когтиП1.png" type="Texture" id=6]
-[ext_resource path="res://img/enym/Вахтёрша/когтиП/когтиП2.png" type="Texture" id=7]
-[ext_resource path="res://img/enym/Вахтёрша/ходьба/ходьба1.png" type="Texture" id=8]
-[ext_resource path="res://img/enym/Вахтёрша/ходьба/ходьба2.png" type="Texture" id=9]
-[ext_resource path="res://img/enym/Вахтёрша/когтиЛ/когтиЛ1.png" type="Texture" id=10]
-[ext_resource path="res://img/enym/Вахтёрша/когтиЛ/когтиЛ2.png" type="Texture" id=11]
-[ext_resource path="res://img/enym/Вахтёрша/выстрел/выстрелП.png" type="Texture" id=12]
-[ext_resource path="res://img/enym/Вахтёрша/выстрел/выстрелЛ.png" type="Texture" id=13]
+[ext_resource path="res://img/enym/Вахтёрша/выстрел/выстрелЛ.png" type="Texture" id=6]
+[ext_resource path="res://img/enym/Вахтёрша/когтиЛ/когтиЛ1.png" type="Texture" id=7]
+[ext_resource path="res://img/enym/Вахтёрша/когтиЛ/когтиЛ2.png" type="Texture" id=8]
+[ext_resource path="res://img/enym/Вахтёрша/выстрел/выстрелП.png" type="Texture" id=9]
+[ext_resource path="res://img/enym/Вахтёрша/ходьба/ходьба1.png" type="Texture" id=10]
+[ext_resource path="res://img/enym/Вахтёрша/ходьба/ходьба2.png" type="Texture" id=11]
+[ext_resource path="res://img/enym/Вахтёрша/когтиП/когтиП1.png" type="Texture" id=12]
+[ext_resource path="res://img/enym/Вахтёрша/когтиП/когтиП2.png" type="Texture" id=13]
 [ext_resource path="res://sceen/enym/vahtersha/left.gd" type="Script" id=14]
 [ext_resource path="res://sceen/enym/vahtersha/right.gd" type="Script" id=15]
+[ext_resource path="res://sceen/enym/vahtersha/body.gd" type="Script" id=16]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -28,34 +29,34 @@ animations = [ {
 "name": "run_r",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 6 ), ExtResource( 7 ), ExtResource( 7 ) ],
+"frames": [ ExtResource( 6 ), ExtResource( 6 ) ],
 "loop": true,
-"name": "hit_r",
+"name": "spell_l",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 8 ), ExtResource( 9 ) ],
-"loop": true,
-"name": "hod",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 10 ), ExtResource( 11 ), ExtResource( 11 ) ],
+"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 8 ) ],
 "loop": true,
 "name": "hit_l",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 12 ) ],
+"frames": [ ExtResource( 9 ), ExtResource( 9 ) ],
 "loop": true,
 "name": "spell_r",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 13 ) ],
+"frames": [ ExtResource( 10 ), ExtResource( 11 ) ],
 "loop": true,
-"name": "spell_l",
+"name": "hod",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 12 ), ExtResource( 13 ), ExtResource( 13 ) ],
+"loop": true,
+"name": "hit_r",
 "speed": 5.0
 } ]
 
 [sub_resource type="RectangleShape2D" id=2]
-extents = Vector2( 110.841, 117.156 )
+extents = Vector2( 110.841, 12.2418 )
 
 [sub_resource type="RectangleShape2D" id=3]
 extents = Vector2( 48.3514, 73.4077 )
@@ -63,16 +64,20 @@ extents = Vector2( 48.3514, 73.4077 )
 [sub_resource type="RectangleShape2D" id=4]
 extents = Vector2( 17.7409, 75.7684 )
 
+[sub_resource type="RectangleShape2D" id=5]
+extents = Vector2( 98.2468, 103.475 )
+
 [node name="Vahtersha" type="KinematicBody2D"]
 script = ExtResource( 1 )
 
 [node name="Anim" type="AnimatedSprite" parent="."]
 frames = SubResource( 1 )
-animation = "spell_l"
+animation = "hit_l"
+frame = 2
 playing = true
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 1.89996, -17.1 )
+position = Vector2( -3.16672, 88.5 )
 shape = SubResource( 2 )
 
 [node name="left" type="Area2D" parent="."]
@@ -97,4 +102,11 @@ __meta__ = {
 shape = SubResource( 4 )
 
 [node name="Timer" type="Timer" parent="."]
+
+[node name="body" type="Area2D" parent="."]
+script = ExtResource( 16 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="body"]
+position = Vector2( 0, -11.4 )
+shape = SubResource( 5 )
 

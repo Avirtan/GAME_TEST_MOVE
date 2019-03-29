@@ -15,6 +15,7 @@ var gravity = 400
 export (bool) var runs = false
 var time = -1
 var r = 4
+var shoot = false
 
 func shoot():
 	if moveR:
@@ -58,7 +59,7 @@ func checkDirect():
 		elif !moveR and runs:
 			speed =200
 			$Anim.animation = "run_l" 
-		else:
+		elif !runs and !shoot:
 			speed =50
 			$Anim.animation = "hod" 
 	"""elif velocity.length()==0:
@@ -84,7 +85,10 @@ func _physics_process(delta):
 			r = rand_range(5,8)
 			#print($"../Player".global_position)
 			shoot()
+			shoot = true
 			time = 0
+		if(shoot and $Anim.frame == 1):
+			shoot = false
 		move_and_slide(velocity, Vector2(0, -1))
 	
 

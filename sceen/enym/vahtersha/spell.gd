@@ -26,7 +26,7 @@ func start(pos,d, dir,napr):
 		position.y -=80
 		velocity = Vector2(-speed, 0)
 	if global_position.y < p.y:
-		tr=1
+		tr=2
 	if global_position.y > p.y:
 		tr=-1
 
