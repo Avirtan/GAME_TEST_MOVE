@@ -28,6 +28,7 @@ zoom = Vector2( 1.2, 1.2 )
 drag_margin_left = 0.22
 
 [node name="Button" type="Button" parent="Player"]
+visible = false
 margin_left = 122.986
 margin_top = -143.503
 margin_right = 367.986

@@ -40,7 +40,7 @@ func move(delta):
 		direction.x = 1
 	elif V.x - P.x > 0 and !runs:
 		direction.x = -1
-	if abs(V.x - P.x) >= 500:
+	if abs(V.x - P.x) >= 670:
 		runs = true
 	distance.x = speed*delta
 	velocity.x = (direction.x*distance.x)/delta
@@ -81,7 +81,7 @@ func _physics_process(delta):
 		if $Timer.time_left >= 0.9 and  $Timer.time_left < 1:
 			time+=1
 		if time > r and !runs:
-			r = rand_range(10,20)
+			r = rand_range(5,8)
 			#print($"../Player".global_position)
 			shoot()
 			time = 0

@@ -8,6 +8,8 @@ var velocity = Vector2()
 var moveR = false
 var get_col = null
 var p = Vector2()
+var tr = 0
+
 func start(pos,d, dir,napr):
 	rotation = dir
 	position = pos
@@ -23,13 +25,14 @@ func start(pos,d, dir,napr):
 		position.x -=95
 		position.y -=80
 		velocity = Vector2(-speed, 0)
+	if global_position.y < p.y:
+		tr=1
+	if global_position.y > p.y:
+		tr=-1
 
 func _physics_process(delta):
-	if global_position.y < p.y:
-		position.y +=1
-	if global_position.y > p.y:
-		position.y -=1
-	print("p: ",p.y," spell:",global_position.y)
+	position.y +=tr
+	#print("p: ",p.y," spell:",global_position.y)
 	move_and_slide(velocity)
 	if get_slide_count() != 0 :
 		get_col = get_slide_collision(get_slide_count()-1)
