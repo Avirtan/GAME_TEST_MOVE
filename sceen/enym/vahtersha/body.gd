@@ -10,4 +10,5 @@ func _physics_process(delta):
 		for  i in r:
 			if i.get_name() == "Player":
 				i.Set_dead()
+				$"..".kill = true
 				
