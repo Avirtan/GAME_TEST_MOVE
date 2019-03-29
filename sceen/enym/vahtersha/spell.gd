@@ -9,29 +9,37 @@ var moveR = false
 var get_col = null
 var p = Vector2()
 var tr = 0
-
-func start(pos,d, dir,napr):
+var runs = false
+func start(pos,d, dir,napr,run):
+	runs = run
 	rotation = dir
 	position = pos
 	moveR = napr
 	p = d
 	if moveR:
 		$Anim.animation = "run_r"
-		position.x +=95
-		position.y -=80
-		velocity = Vector2(speed, 0)
+		if !runs:
+			position.x +=95
+			position.y -=80
+			velocity = Vector2(speed, 0)
 	else:
 		$Anim.animation = "run_l"
-		position.x -=95
-		position.y -=80
-		velocity = Vector2(-speed, 0)
-	if global_position.y < p.y:
+		if !runs:
+			position.x -=95
+			position.y -=80
+			velocity = Vector2(-speed, 0)
+		else:
+			position.x -=75
+			position.y -=80
+			velocity = Vector2(0, -speed)
+	if global_position.y < p.y and !runs:
 		tr=2
-	if global_position.y > p.y:
+	if global_position.y > p.y and !runs:
 		tr=-1
 
 func _physics_process(delta):
-	position.y +=tr
+	if !runs:
+		position.y +=tr
 	#print("p: ",p.y," spell:",global_position.y)
 	move_and_slide(velocity)
 	if get_slide_count() != 0 :

@@ -18,12 +18,12 @@ var r = 4
 var shoot = false
 
 func shoot():
-	if moveR:
+	if moveR and !runs:
 		$Anim.animation = "spell_r"
-	else:
+	elif !moveR and !runs:
 		$Anim.animation = "spell_l"
 	var b = Bullet.instance()
-	b.start(self.global_position,$"../Player".global_position, rotation,moveR)
+	b.start(self.global_position,$"../Player".global_position, rotation,moveR,runs)
 	get_parent().add_child(b)
 
 func move(delta):
@@ -69,6 +69,21 @@ func checkDirect():
 		else:
 			pass
 			#$Anim.animation = "stopl" """
+func shooting():
+	if $Timer.time_left >= 0.9 and  $Timer.time_left < 1:
+			time+=1
+	if time > r and !runs:
+		r = rand_range(5,8)
+		#print($"../Player".global_position)
+		shoot()
+		shoot = true
+		time = 0
+	if runs and !moveR and time == 2:
+		shoot()
+		time = 0
+		
+	if(shoot and $Anim.frame == 1):
+		shoot = false
 
 func _ready():
 	runs = false
@@ -79,16 +94,7 @@ func _physics_process(delta):
 	if(!kill):
 		checkDirect()
 		move(delta)
-		if $Timer.time_left >= 0.9 and  $Timer.time_left < 1:
-			time+=1
-		if time > r and !runs:
-			r = rand_range(5,8)
-			#print($"../Player".global_position)
-			shoot()
-			shoot = true
-			time = 0
-		if(shoot and $Anim.frame == 1):
-			shoot = false
+		shooting()
 		move_and_slide(velocity, Vector2(0, -1))
 	
 
