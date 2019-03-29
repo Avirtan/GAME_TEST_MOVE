@@ -17,8 +17,7 @@ position = Vector2( -10.6631, 560.005 )
 scale = Vector2( 0.843736, 0.872223 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-editor/display_folded = true
-position = Vector2( -984.759, -71.13 )
+position = Vector2( -2172.26, 533.07 )
 z_index = 2
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
@@ -149,7 +148,7 @@ shape = SubResource( 1 )
 texture = ExtResource( 4 )
 
 [node name="Vahtersha" parent="." instance=ExtResource( 5 )]
-position = Vector2( -1533.22, 523.064 )
+position = Vector2( -1662.42, 530.664 )
 
 [node name="Gopnik" parent="." instance=ExtResource( 6 )]
 position = Vector2( 923.369, 312.505 )

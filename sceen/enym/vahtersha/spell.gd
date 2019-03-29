@@ -1,37 +1,47 @@
 extends KinematicBody2D
 
+func _ready():
+	pass # Replace with function body.
 
-var speed = 500
+var speed = 200
 var velocity = Vector2()
 var moveR = false
 var get_col = null
-func start(pos, dir,napr):
+var p = Vector2()
+func start(pos,d, dir,napr):
 	rotation = dir
 	position = pos
 	moveR = napr
+	p = d
 	if moveR:
-		position.x +=80
+		$Anim.animation = "run_r"
+		position.x +=95
+		position.y -=80
 		velocity = Vector2(speed, 0)
 	else:
-		position.x -=90
+		$Anim.animation = "run_l"
+		position.x -=95
+		position.y -=80
 		velocity = Vector2(-speed, 0)
 
 func _physics_process(delta):
+	if global_position.y < p.y:
+		position.y +=1
+	if global_position.y > p.y:
+		position.y -=1
+	print("p: ",p.y," spell:",global_position.y)
 	move_and_slide(velocity)
 	if get_slide_count() != 0 :
 		get_col = get_slide_collision(get_slide_count()-1)
 	if get_col!= null:
-		if get_col.collider.has_method('atack'):
-			get_col.collider.atack()
-			dead()
-		dead()
+		if get_col.collider.has_method("Set_dead"):
+			get_col.collider.Set_dead()
+			delete()
+		delete()
 	if $"../Player/Camera2D".global_position.x > global_position.x+800:
-		dead()
+		delete()
 	if $"../Player/Camera2D".global_position.x < global_position.x-800:
-		dead()
+		delete()
 
-func dead():
-	queue_free()
-
-func _on_Visibility_screen_exited():
+func delete():
 	queue_free()

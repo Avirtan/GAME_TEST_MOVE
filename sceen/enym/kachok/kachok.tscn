@@ -5,10 +5,10 @@
 [ext_resource path="res://img/enym/kachok/кочкаЛ/кочкаШаг2Л.png" type="Texture" id=3]
 [ext_resource path="res://img/enym/kachok/кочкаП/кочкаШаг1П.png" type="Texture" id=4]
 [ext_resource path="res://img/enym/kachok/кочкаП/кочкаШаг2П.png" type="Texture" id=5]
-[ext_resource path="res://img/enym/kachok/кочкаЛ/кочкаСтойкаЛ.png" type="Texture" id=6]
-[ext_resource path="res://img/enym/kachok/кочкаЛ/кочкаУдарЛ.png" type="Texture" id=7]
-[ext_resource path="res://img/enym/kachok/кочкаП/кочкаУдарП.png" type="Texture" id=8]
-[ext_resource path="res://img/enym/kachok/кочкаП/кочкаСтойкаП.png" type="Texture" id=9]
+[ext_resource path="res://img/enym/kachok/кочкаП/кочкаУдарП.png" type="Texture" id=6]
+[ext_resource path="res://img/enym/kachok/кочкаП/кочкаСтойкаП.png" type="Texture" id=7]
+[ext_resource path="res://img/enym/kachok/кочкаЛ/кочкаУдарЛ.png" type="Texture" id=8]
+[ext_resource path="res://img/enym/kachok/кочкаЛ/кочкаСтойкаЛ.png" type="Texture" id=9]
 [ext_resource path="res://img/enym/kachok/кочкаП/кочкаХадоукенП.png" type="Texture" id=10]
 [ext_resource path="res://img/enym/kachok/кочкаЛ/кочкаХадоукенЛ.png" type="Texture" id=11]
 [ext_resource path="res://sceen/enym/kachok/hitr.gd" type="Script" id=12]
@@ -27,19 +27,19 @@ animations = [ {
 "name": "run_r",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 6 ) ],
+"frames": [ ExtResource( 6 ), ExtResource( 7 ) ],
 "loop": true,
-"name": "stop_l",
-"speed": 5.0
-}, {
-"frames": [ ExtResource( 7 ), ExtResource( 6 ) ],
-"loop": true,
-"name": "hit_l",
+"name": "hit_r",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 8 ), ExtResource( 9 ) ],
 "loop": true,
-"name": "hit_r",
+"name": "hit_l",
+"speed": 5.0
+}, {
+"frames": [ ExtResource( 9 ) ],
+"loop": true,
+"name": "stop_l",
 "speed": 5.0
 }, {
 "frames": [ ExtResource( 10 ), ExtResource( 10 ), ExtResource( 10 ) ],
@@ -52,7 +52,7 @@ animations = [ {
 "name": "had_l",
 "speed": 5.0
 }, {
-"frames": [ ExtResource( 9 ) ],
+"frames": [ ExtResource( 7 ) ],
 "loop": true,
 "name": "stop_r",
 "speed": 5.0
