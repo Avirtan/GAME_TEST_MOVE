@@ -23,17 +23,22 @@ func start(pos,d, dir,napr,run):
 			position.x +=95
 			position.y -=80
 			velocity = Vector2(speed, 0)
+		else:
+			$Anim.animation = "run_l"
+			position.x +=55
+			position.y -=100
+			velocity = Vector2(0, -speed)
 	else:
 		$Anim.animation = "run_l"
 		if !runs:
 			position.x -=95
 			position.y -=80
 			velocity = Vector2(-speed, 0)
-		else:
+		"""else:
 			$Anim.animation = "run_r"
 			position.x -=75
 			position.y -=80
-			velocity = Vector2(0, -speed)
+			velocity = Vector2(0, -speed)"""
 	if global_position.y < p.y and !runs:
 		tr=2
 	if global_position.y > p.y and !runs:
