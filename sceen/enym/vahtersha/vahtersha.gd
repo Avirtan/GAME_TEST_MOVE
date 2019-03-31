@@ -108,6 +108,7 @@ func _physics_process(delta):
 		shooting(delta)
 		velocity.y += gravity*delta
 		move_and_slide(velocity, Vector2(0, -1))
+		
 	if kill:
 		$Anim.animation = "hod"
 		velocity.x = 0

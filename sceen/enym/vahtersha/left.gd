@@ -12,7 +12,7 @@ func _physics_process(delta):
 	var r = get_overlapping_bodies()
 	if(!$"..".kill):
 		for  i in r:
-			if !i.has_method("dead")  and i.get_name() != "Player" and r.size()==2:
+			if !i.has_method("dead")  and i.get_name() != "Player" and r.size()==1:
 				$"..".directionR = true
 				$"..".runs = false
 			elif i.get_name() == "Player":
