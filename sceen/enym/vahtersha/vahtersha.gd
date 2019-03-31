@@ -45,7 +45,8 @@ func move(delta):
 		runs = true
 	distance.x = speed*delta
 	velocity.x = (direction.x*distance.x)/delta
-	velocity.y = gravity 
+	
+		
 
 func checkDirect():
 	if velocity.x > 0:
@@ -83,21 +84,34 @@ func shooting(delta):
 	if runs and moveR and time > 0.3:
 		shoot()
 		time = 0
-	print(time)	
 	if(shoot and $Anim.frame == 1):
 		shoot = false
+	if Global.jump==1 and is_on_floor() and !moveR and runs:
+		jump()
+
+func jump():
+	if runs and is_on_floor():
+		velocity.y =-350
 
 func _ready():
 	runs = false
 	$Timer.start()
 
 func _physics_process(delta):
-	#print(runs)
 	if(!kill):
 		checkDirect()
 		move(delta)
 		shooting(delta)
+		velocity.y += gravity*delta
 		move_and_slide(velocity, Vector2(0, -1))
+	if kill:
+		$Anim.animation = "hod"
+		velocity.x = 0
+		velocity.y += gravity*delta
+		move_and_slide(velocity, Vector2(0, -1))
+	
+		
+	
 	
 
 func dead():

@@ -63,6 +63,8 @@ func get_input(delta):
 	tp = Input.is_action_just_pressed("tp")
 	spell_p = Input.is_action_just_pressed("spell")
 	if !is_on_floor():
+		if Global.jump ==0:
+			Global.jump = 1
 		#print(1)
 		#if  !run_l and !run_r and velocity.y < 0:
 		#$Anim.animation = "jump_ml" 
@@ -201,6 +203,7 @@ func _physics_process(delta):
 	if(!dead):
 		get_input(delta)
 		if ($".".left or $".".right) and velocity.y > -100  and !is_on_floor():
+			Global.jump = 0
 			if time < 0:
 				time = 0
 			if($".".right and !hit):
@@ -220,7 +223,9 @@ func _physics_process(delta):
 		time+=delta
 	else:
 		velocity.y += gravity * delta
+	#print(Global.jump)
 	if is_on_floor():
+		Global.jump = 0
 		otskok = false
 		jumping = false
 		time =0

@@ -19,6 +19,10 @@ config/name="Новый игровой проект"
 run/main_scene="res://sceen/menu/main2d.tscn"
 config/icon="res://icon.png"
 
+[autoload]
+
+Global="*res://sceen/globalVar/new_script.gd"
+
 [display]
 
 window/size/width=1200
