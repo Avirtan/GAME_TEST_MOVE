@@ -73,15 +73,19 @@ func checkDirect():
 func shooting(delta):
 	if $Timer.time_left >= 0.9 and  $Timer.time_left < 1 and !runs:
 		time+=1
-	if  runs:
+	elif $Timer.time_left >= 0.5 and  $Timer.time_left < 1 and runs and !moveR:
+		time+=1
+	if  runs and moveR:
 		time+=delta
 	if time > r and !runs:
 		r = rand_range(5,8)
-		#print($"../Player".global_position)
 		shoot()
 		shoot = true
 		time = 0
-	if runs and !moveR and time > 0.3:
+	if runs and moveR and time > 0.3:
+		shoot()
+		time = 0
+	if runs and !moveR and time > 3:
 		shoot()
 		time = 0
 	if(shoot and $Anim.frame == 1):
