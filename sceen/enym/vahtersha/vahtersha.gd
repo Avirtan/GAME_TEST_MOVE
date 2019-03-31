@@ -81,12 +81,12 @@ func shooting(delta):
 		shoot()
 		shoot = true
 		time = 0
-	if runs and moveR and time > 0.3:
+	if runs and !moveR and time > 0.3:
 		shoot()
 		time = 0
 	if(shoot and $Anim.frame == 1):
 		shoot = false
-	if Global.jump==1 and is_on_floor() and !moveR and runs:
+	if Global.jump==1 and is_on_floor() and moveR and runs:
 		jump()
 
 func jump():
