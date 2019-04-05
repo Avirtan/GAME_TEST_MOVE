@@ -17,7 +17,8 @@ position = Vector2( -10.6631, 560.005 )
 scale = Vector2( 0.843736, 0.872223 )
 
 [node name="Player" parent="." instance=ExtResource( 2 )]
-position = Vector2( -2176.06, 517.87 )
+editor/display_folded = true
+position = Vector2( -1017.06, 54.2701 )
 z_index = 2
 
 [node name="Camera2D" type="Camera2D" parent="Player"]
